@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module IcAgent::Utils - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-decode_blob">::decode_blob</a>
+    
+    <li ><a href="#method-c-encode_list">::encode_list</a>
+    
+    <li ><a href="#method-c-idl_hash">::idl_hash</a>
+    
+    <li ><a href="#method-c-label_hash">::label_hash</a>
+    
+    <li ><a href="#method-c-to_request_id">::to_request_id</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-IcAgent::Utils">
+  <h1 id="module-IcAgent::Utils" class="module">
+    module IcAgent::Utils
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-decode_blob" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">decode_blob</span><span
+            class="method-args">(blob_bytes)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="decode_blob-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">decode_blob</span>(<span class="ruby-identifier">blob_bytes</span>)
+  <span class="ruby-identifier">blob_bytes</span>.<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;C*&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-encode_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">encode_list</span><span
+            class="method-args">(l)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="encode_list-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">encode_list</span>(<span class="ruby-identifier">l</span>)
+  <span class="ruby-identifier">ret</span> = <span class="ruby-string">&#39;&#39;</span>
+  <span class="ruby-identifier">l</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">v</span> = <span class="ruby-identifier">item</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+      <span class="ruby-identifier">v</span> = <span class="ruby-identifier">encode_list</span>(<span class="ruby-identifier">item</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>)
+      <span class="ruby-identifier">v</span> = <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-identifier">v</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+      <span class="ruby-identifier">v</span> = <span class="ruby-identifier">item</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">ret</span> <span class="ruby-operator">+=</span> <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">ret</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-idl_hash" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">idl_hash</span><span
+            class="method-args">(s)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="idl_hash-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">idl_hash</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-identifier">h</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">s</span>.<span class="ruby-identifier">bytes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">h</span> = (<span class="ruby-identifier">h</span> <span class="ruby-operator">*</span> <span class="ruby-value">223</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">c</span>) <span class="ruby-operator">%</span> <span class="ruby-value">2</span><span class="ruby-operator">**</span><span class="ruby-value">32</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">h</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-label_hash" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">label_hash</span><span
+            class="method-args">(s)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>used for sort record by key</p>
+          
+          
+
+          
+          <div class="method-source-code" id="label_hash-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">label_hash</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/(^_\d+_$)|(^_0x[0-9a-fA-F]+_$)/</span>
+    <span class="ruby-identifier">num</span> = <span class="ruby-identifier">s</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-2</span>]
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">num</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&quot;0x&quot;</span>)
+        <span class="ruby-identifier">num</span> = <span class="ruby-identifier">num</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">num</span> = <span class="ruby-identifier">num</span>.<span class="ruby-identifier">to_i</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">rescue</span>
+      <span class="ruby-comment"># fallback</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">num</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">num</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">num</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">2</span><span class="ruby-operator">**</span><span class="ruby-value">32</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">num</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">idl_hash</span>(<span class="ruby-identifier">s</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-to_request_id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_request_id</span><span
+            class="method-args">(d)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_request_id-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">to_request_id</span>(<span class="ruby-identifier">d</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+
+  <span class="ruby-identifier">vec</span> = []
+
+  <span class="ruby-identifier">d</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">v</span> = <span class="ruby-identifier">encode_list</span>(<span class="ruby-identifier">v</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+    <span class="ruby-identifier">v</span> = <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-identifier">v</span>).<span class="ruby-identifier">string</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>)
+    <span class="ruby-identifier">k</span> = <span class="ruby-identifier">k</span>.<span class="ruby-identifier">hex</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+    <span class="ruby-identifier">v</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">str2hex</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+    <span class="ruby-identifier">h_k</span> = <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-identifier">h_v</span> = <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">v</span>)
+    <span class="ruby-identifier">vec</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">h_k</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">h_v</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">s</span> = <span class="ruby-identifier">vec</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">join</span>
+  <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">s</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

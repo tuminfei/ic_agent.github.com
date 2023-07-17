@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class IcAgent::Certificate - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Object
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-delegation">::delegation</a>
+    
+    <li ><a href="#method-c-domain_sep">::domain_sep</a>
+    
+    <li ><a href="#method-c-find_label">::find_label</a>
+    
+    <li ><a href="#method-c-flatten_forks">::flatten_forks</a>
+    
+    <li ><a href="#method-c-lookup">::lookup</a>
+    
+    <li ><a href="#method-c-lookup_path">::lookup_path</a>
+    
+    <li ><a href="#method-c-reconstruct">::reconstruct</a>
+    
+    <li ><a href="#method-c-signature">::signature</a>
+    
+    <li ><a href="#method-c-tree">::tree</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-IcAgent::Certificate">
+  <h1 id="class-IcAgent::Certificate" class="class">
+    class IcAgent::Certificate
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-delegation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delegation</span><span
+            class="method-args">(cert)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delegation-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/certificate.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">delegation</span>(<span class="ruby-identifier">cert</span>)
+  <span class="ruby-identifier">cert</span>.<span class="ruby-identifier">value</span>[<span class="ruby-string">&#39;delegation&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-domain_sep" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">domain_sep</span><span
+            class="method-args">(s)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="domain_sep-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/certificate.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">domain_sep</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-identifier">len</span> = [<span class="ruby-identifier">s</span>.<span class="ruby-identifier">bytesize</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;C&#39;</span>)
+  <span class="ruby-identifier">str</span> = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>)
+  <span class="ruby-identifier">len</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">str</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-find_label" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_label</span><span
+            class="method-args">(l, trees)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="find_label-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/certificate.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">find_label</span>(<span class="ruby-identifier">l</span>, <span class="ruby-identifier">trees</span>)
+  <span class="ruby-identifier">trees</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">t</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">NodeId</span><span class="ruby-operator">::</span><span class="ruby-constant">LABELED</span>
+      <span class="ruby-identifier">p</span> = <span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>]
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">t</span>[<span class="ruby-value">2</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">p</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-flatten_forks" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">flatten_forks</span><span
+            class="method-args">(t)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="flatten_forks-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/certificate.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">flatten_forks</span>(<span class="ruby-identifier">t</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">t</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">NodeId</span><span class="ruby-operator">::</span><span class="ruby-constant">EMPTY</span>
+    []
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">t</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">NodeId</span><span class="ruby-operator">::</span><span class="ruby-constant">FORK</span>
+    <span class="ruby-identifier">val1</span> = <span class="ruby-identifier">flatten_forks</span>(<span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>])
+    <span class="ruby-identifier">val2</span> = <span class="ruby-identifier">flatten_forks</span>(<span class="ruby-identifier">t</span>[<span class="ruby-value">2</span>])
+    <span class="ruby-identifier">val1</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">val2</span>)
+    <span class="ruby-identifier">val1</span>
+  <span class="ruby-keyword">else</span>
+    [<span class="ruby-identifier">t</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-lookup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lookup</span><span
+            class="method-args">(path, cert)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="lookup-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/certificate.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">lookup</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">cert</span>)
+  <span class="ruby-identifier">lookup_path</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">cert</span>.<span class="ruby-identifier">value</span>[<span class="ruby-string">&#39;tree&#39;</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-lookup_path" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lookup_path</span><span
+            class="method-args">(path, tree)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="lookup_path-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/certificate.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">lookup_path</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">tree</span>)
+  <span class="ruby-identifier">offset</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">tree</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">NodeId</span><span class="ruby-operator">::</span><span class="ruby-constant">LEAF</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">tree</span>[<span class="ruby-value">1</span>]
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">label</span> = <span class="ruby-identifier">path</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">path</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">encode</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">path</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-identifier">t</span> = <span class="ruby-identifier">find_label</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">flatten_forks</span>(<span class="ruby-identifier">tree</span>))
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">t</span>
+    <span class="ruby-identifier">offset</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">lookup_path</span>(<span class="ruby-identifier">path</span>[<span class="ruby-identifier">offset</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>], <span class="ruby-identifier">t</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-reconstruct" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reconstruct</span><span
+            class="method-args">(t)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reconstruct-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/certificate.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">reconstruct</span>(<span class="ruby-identifier">t</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">t</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeId</span><span class="ruby-operator">::</span><span class="ruby-constant">EMPTY</span> <span class="ruby-comment"># NodeId.Empty</span>
+    <span class="ruby-identifier">domain_sep</span> = <span class="ruby-identifier">domain_sep</span>(<span class="ruby-string">&#39;ic-hashtree-empty&#39;</span>)
+    <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">domain_sep</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeId</span><span class="ruby-operator">::</span><span class="ruby-constant">PRUNED</span> <span class="ruby-comment"># NodeId.Pruned</span>
+    <span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>]
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeId</span><span class="ruby-operator">::</span><span class="ruby-constant">LEAF</span> <span class="ruby-comment"># NodeId.Leaf</span>
+    <span class="ruby-identifier">domain_sep</span> = <span class="ruby-identifier">domain_sep</span>(<span class="ruby-string">&#39;ic-hashtree-leaf&#39;</span>)
+    <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">domain_sep</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>])
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeId</span><span class="ruby-operator">::</span><span class="ruby-constant">LABELED</span> <span class="ruby-comment"># NodeId.Labeled</span>
+    <span class="ruby-identifier">domain_sep</span> = <span class="ruby-identifier">domain_sep</span>(<span class="ruby-string">&#39;ic-hashtree-labeled&#39;</span>)
+    <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">domain_sep</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">reconstruct</span>(<span class="ruby-identifier">t</span>[<span class="ruby-value">2</span>]))
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeId</span><span class="ruby-operator">::</span><span class="ruby-constant">FORK</span> <span class="ruby-comment"># NodeId.Fork</span>
+    <span class="ruby-identifier">domain_sep</span> = <span class="ruby-identifier">domain_sep</span>(<span class="ruby-string">&#39;ic-hashtree-fork&#39;</span>)
+    <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">domain_sep</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">reconstruct</span>(<span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>]) <span class="ruby-operator">+</span> <span class="ruby-identifier">reconstruct</span>(<span class="ruby-identifier">t</span>[<span class="ruby-value">2</span>]))
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;unreachable&#39;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-signature" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">signature</span><span
+            class="method-args">(cert)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="signature-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/certificate.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">signature</span>(<span class="ruby-identifier">cert</span>)
+  <span class="ruby-identifier">cert</span>.<span class="ruby-identifier">value</span>[<span class="ruby-string">&#39;signature&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-tree" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tree</span><span
+            class="method-args">(cert)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tree-source">
+            <pre><span class="ruby-comment"># File lib/ic_agent/certificate.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">tree</span>(<span class="ruby-identifier">cert</span>)
+  <span class="ruby-identifier">cert</span>.<span class="ruby-identifier">value</span>[<span class="ruby-string">&#39;tree&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

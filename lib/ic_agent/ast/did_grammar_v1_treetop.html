@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>did_grammar_v1.treetop - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+  var index_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/navigation.js" defer></script>
+<script src="../../../js/search.js" defer></script>
+<script src="../../../js/search_index.js" defer></script>
+<script src="../../../js/searcher.js" defer></script>
+<script src="../../../js/darkfish.js" defer></script>
+
+<link href="../../../css/fonts.css" rel="stylesheet">
+<link href="../../../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../CODE_OF_CONDUCT_md.html">CODE_OF_CONDUCT</a>
+  
+    <li><a href="../../../Dockerfile.html">Dockerfile</a>
+  
+    <li><a href="../../../Gemfile.html">Gemfile</a>
+  
+    <li><a href="../../../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="../../../LICENSE_txt.html">LICENSE</a>
+  
+    <li><a href="../../../README_md.html">README</a>
+  
+    <li><a href="../../../Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../bin/setup.html">setup</a>
+  
+    <li><a href="../../../lib/ic_agent/ast/did_grammar_treetop.html">did_grammar.treetop</a>
+  
+    <li><a href="../../../lib/ic_agent/ast/did_grammar_v1_treetop.html">did_grammar_v1.treetop</a>
+  
+    <li><a href="../../../lib/ic_agent/ast/did_grammar_v2_treetop.html">did_grammar_v2.treetop</a>
+  
+    <li><a href="../../../lib/ic_agent/ast/nested_type_grammar_treetop.html">nested_type_grammar.treetop</a>
+  
+    <li><a href="../../../lib/ic_agent/ast/record_parser_treetop.html">record_parser.treetop</a>
+  
+    <li><a href="../../../lib/ic_agent/ast/variant_parser_treetop.html">variant_parser.treetop</a>
+  
+    <li><a href="../../../sig/ic_agent_rbs.html">ic_agent.rbs</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page lib/ic_agent/ast/did_grammar_v1.treetop">
+
+<p>grammar DIDGrammar</p>
+
+<pre>rule body
+  ( type_declaration / service_declaration / comment / end_of_line )* &lt;IcAgent::Ast::Nodes::DIDFile&gt;
+end
+
+rule base_type
+  &#39;bool&#39; / &#39;text&#39; / &#39;null&#39; / &#39;reserved&#39; / &#39;empty&#39; / &#39;principal&#39; / &#39;nat&#39; / &#39;nat8&#39; / &#39;nat16&#39; / &#39;nat32&#39; / &#39;nat64&#39; / &#39;int&#39; / &#39;int8&#39; / &#39;int16&#39; / &#39;int32&#39; / &#39;int64&#39; / &#39;float32&#39; / &#39;float64&#39; /
+  &#39;opt&#39; / &#39;vec&#39; / &#39;record&#39; / &#39;variant&#39; / &#39;service&#39; / &#39;func&#39;
+end
+
+rule type_declaration
+  &quot;type&quot; space type_name space &quot;=&quot; space type_input_base_type space &quot;{&quot; end_of_line? type_body &quot;};&quot; end_of_line &lt;IcAgent::Ast::Nodes::TypeDeclaration&gt;
+end
+
+rule type_name
+  [a-zA-Z0-9_]+ &lt;IcAgent::Ast::Nodes::TypeName&gt;
+end
+
+rule type_body
+  type_body_item* &lt;IcAgent::Ast::Nodes::TypeBody&gt;
+end
+
+rule type_input_base_type
+    base_type+ &lt;IcAgent::Ast::Nodes::TypeInputBaseType&gt;
+end
+
+rule type_body_item
+  type_body_item_obj (&#39;;&#39; space)* &lt;IcAgent::Ast::Nodes::TypeBodyItem&gt;
+end
+
+rule type_body_item_obj
+  type_body_item_name &#39;:&#39;? type_body_item_value? &lt;IcAgent::Ast::Nodes::TypeBodyItemObj&gt;
+end
+
+rule type_body_item_name
+  [a-zA-Z0-9_ ]+ &lt;IcAgent::Ast::Nodes::TypeBodyItemName&gt;
+end
+
+rule type_body_item_value
+  [a-zA-Z0-9_ ]+ &lt;IcAgent::Ast::Nodes::TypeBodyItemValue&gt;
+end
+
+rule body_item_element
+  [a-zA-Z0-9_: ]+
+end
+
+rule comment
+  space? &#39;//&#39; space? rest_of_line &lt;IcAgent::Ast::Nodes::Comment&gt;
+end
+
+rule service_declaration
+  &quot;service&quot; space &quot;:&quot; space &quot;(&quot; ic_service_name &quot;)&quot; space? &quot;-&gt;&quot; space? &quot;{&quot; end_of_line service_methods &quot;}&quot;  &lt;IcAgent::Ast::Nodes::Service&gt;
+end
+
+rule ic_service_name
+  [a-zA-Z0-9_]* &lt;IcAgent::Ast::Nodes::IcServiceName&gt;
+end
+
+rule service_methods
+  (service_item)+ &lt;IcAgent::Ast::Nodes::IcServiceMethods&gt;
+end
+
+rule service_item
+  space? service_method_name space? &quot;:&quot; space? &quot;(&quot; service_method_params? &quot;)&quot; space? &quot;-&gt;&quot; space? &quot;(&quot; service_method_return_type &quot;)&quot; space? method_query? &#39;;&#39; end_of_line? &lt;IcAgent::Ast::Nodes::IcServiceItem&gt;
+end
+
+rule service_method_params
+  param_element (&quot;, &quot; param_element)* &lt;IcAgent::Ast::Nodes::IcServiceMethodParams&gt;
+end
+
+rule service_method_return_type
+  [a-zA-Z0-9_]* &lt;IcAgent::Ast::Nodes::IcServiceMethodReturn&gt;
+end
+
+rule method_query
+  [a-zA-Z0-9_]* &lt;IcAgent::Ast::Nodes::IcServiceMethodQuery&gt;
+end
+
+rule words
+  [a-zA-Z_] [a-zA-Z0-9_]*
+end
+
+rule param_element
+  [a-zA-Z0-9_ ]+
+end
+
+rule service_method_name
+  [a-zA-Z0-9_]* &lt;IcAgent::Ast::Nodes::IcServiceMethodName&gt;
+end
+
+rule string_without_spaces
+  [\S]* &lt;IcAgent::Ast::Nodes::StringLiteral&gt;
+end
+
+rule rest_of_line
+  [^\n]* &lt;IcAgent::Ast::Nodes::StringLiteral&gt;
+end
+
+rule end_of_line
+  [\n]+
+end
+
+rule space
+  [\s]+
+end
+
+rule start_space
+  [^\s]+
+end</pre>
+
+<p>end</p>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
