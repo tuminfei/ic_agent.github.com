@@ -112,6 +112,8 @@
 
   <section class="description">
     
+<p>Base class for <a href="Principal.html"><code>Principal</code></a>.</p>
+
   </section>
 
   
@@ -204,13 +206,15 @@
 
         <div class="method-description">
           
-          
+          <p>Creates a new anonymous <a href="Principal.html"><code>Principal</code></a>.</p>
+
+<p>Returns: The anonymous <a href="Principal.html"><code>Principal</code></a> instance.</p>
           
           
 
           
           <div class="method-source-code" id="anonymous-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 40</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">anonymous</span>
   <span class="ruby-constant">Principal</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">bytes:</span> <span class="ruby-string">&quot;\x04&quot;</span>.<span class="ruby-identifier">b</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -237,13 +241,20 @@
 
         <div class="method-description">
           
-          
+          <p>Creates a new <a href="Principal.html"><code>Principal</code></a> from a hexadecimal string representation.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>s: The hexadecimal string representation of the <a href="Principal.html"><code>Principal</code></a>.</p>
+</li></ul>
+
+<p>Returns: The <a href="Principal.html"><code>Principal</code></a> instance.</p>
           
           
 
           
           <div class="method-source-code" id="from_hex-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 56</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">from_hex</span>(<span class="ruby-identifier">s</span>)
   <span class="ruby-constant">Principal</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">bytes:</span> [<span class="ruby-identifier">s</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;H*&#39;</span>))
 <span class="ruby-keyword">end</span></pre>
@@ -270,13 +281,20 @@
 
         <div class="method-description">
           
-          
+          <p>Creates a new <a href="Principal.html"><code>Principal</code></a> from a string representation.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>s: The string representation of the <a href="Principal.html"><code>Principal</code></a>.</p>
+</li></ul>
+
+<p>Returns: The <a href="Principal.html"><code>Principal</code></a> instance.</p>
           
           
 
           
           <div class="method-source-code" id="from_str-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 44</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">from_str</span>(<span class="ruby-identifier">s</span>)
   <span class="ruby-identifier">s1</span> = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;-&#39;</span>)
   <span class="ruby-identifier">pad_len</span> = ((<span class="ruby-identifier">s1</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">/</span> <span class="ruby-value">8.0</span>).<span class="ruby-identifier">ceil</span> <span class="ruby-operator">*</span> <span class="ruby-value">8</span>) <span class="ruby-operator">-</span> <span class="ruby-identifier">s1</span>.<span class="ruby-identifier">length</span>
@@ -311,13 +329,15 @@
 
         <div class="method-description">
           
-          
+          <p>Creates a new <a href="Principal.html"><code>Principal</code></a> instance representing the management canister.</p>
+
+<p>Returns: The <a href="Principal.html"><code>Principal</code></a> instance representing the management canister.</p>
           
           
 
           
           <div class="method-source-code" id="management_canister-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 27</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">management_canister</span>
   <span class="ruby-constant">Principal</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -344,13 +364,18 @@
 
         <div class="method-description">
           
-          
+          <p>Initializes a new instance of the <a href="Principal.html"><code>Principal</code></a> class.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>bytes: The bytes representing the principal. Defaults to an empty string.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 20</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">bytes:</span> <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">b</span>)
   <span class="ruby-ivar">@len</span> = <span class="ruby-identifier">bytes</span>.<span class="ruby-identifier">length</span>
   <span class="ruby-ivar">@bytes</span> = <span class="ruby-identifier">bytes</span>
@@ -380,19 +405,26 @@
 
         <div class="method-description">
           
-          
+          <p>Creates a new self-authenticating <a href="Principal.html"><code>Principal</code></a>.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>pubkey: The public key associated with the self-authenticating <a href="Principal.html"><code>Principal</code></a>.</p>
+</li></ul>
+
+<p>Returns: The self-authenticating <a href="Principal.html"><code>Principal</code></a> instance.</p>
           
           
 
           
           <div class="method-source-code" id="self_authenticating-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 31</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">self_authenticating</span>(<span class="ruby-identifier">pubkey</span>)
   <span class="ruby-comment"># check pubkey.size for is ed25519 or secp256k1</span>
   <span class="ruby-identifier">pubkey</span> = [<span class="ruby-identifier">pubkey</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;H*&#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">pubkey</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">!=</span> <span class="ruby-value">44</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">pubkey</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">!=</span> <span class="ruby-value">88</span>
 
   <span class="ruby-identifier">hash_</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA224</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">pubkey</span>)
-  <span class="ruby-identifier">hash_</span> <span class="ruby-operator">+=</span> [<span class="ruby-constant">PrincipalSort</span><span class="ruby-operator">::</span><span class="ruby-constant">SelfAuthenticating</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;C&#39;</span>)
+  <span class="ruby-identifier">hash_</span> <span class="ruby-operator">+=</span> [<span class="ruby-constant">PrincipalSort</span><span class="ruby-operator">::</span><span class="ruby-constant">SELF_AUTHENTICATING</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;C&#39;</span>)
   <span class="ruby-constant">Principal</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">bytes:</span> <span class="ruby-identifier">hash_</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -426,13 +458,20 @@
 
         <div class="method-description">
           
-          
+          <p>Compares the <a href="Principal.html"><code>Principal</code></a> with another <a href="Principal.html"><code>Principal</code></a>.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>other: The other <a href="Principal.html"><code>Principal</code></a> to compare with.</p>
+</li></ul>
+
+<p>Returns: The comparison result as a string (&#39;lt&#39;, &#39;eq&#39;, or &#39;gt&#39;).</p>
           
           
 
           
           <div class="method-source-code" id="compare_to-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 82</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 126</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compare_to</span>(<span class="ruby-identifier">other</span>)
   (<span class="ruby-value">0</span><span class="ruby-operator">...</span>[<span class="ruby-keyword">self</span>.<span class="ruby-identifier">bytes</span>.<span class="ruby-identifier">length</span>, <span class="ruby-identifier">other</span>.<span class="ruby-identifier">bytes</span>.<span class="ruby-identifier">length</span>].<span class="ruby-identifier">min</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">bytes</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">bytes</span>[<span class="ruby-identifier">i</span>]
@@ -473,13 +512,20 @@
 
         <div class="method-description">
           
-          <p>Utility method checking whether a provided <a href="Principal.html"><code>Principal</code></a> is greater than or equal to the current one using the `compareTo` method</p>
+          <p>Utility method checking whether a provided <a href="Principal.html"><code>Principal</code></a> is greater than or equal to the current one using the `compare_to` method.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>other: The other <a href="Principal.html"><code>Principal</code></a> to compare with.</p>
+</li></ul>
+
+<p>Returns: `true` if the current <a href="Principal.html"><code>Principal</code></a> is greater than or equal to the provided <a href="Principal.html"><code>Principal</code></a>, otherwise `false`.</p>
           
           
 
           
           <div class="method-source-code" id="gt_eq-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 107</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 161</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gt_eq</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">cmp</span> = <span class="ruby-identifier">compare_to</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-node">%w[gt eq]</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">cmp</span>)
@@ -507,13 +553,20 @@
 
         <div class="method-description">
           
-          <p>Utility method checking whether a provided <a href="Principal.html"><code>Principal</code></a> is less than or equal to the current one using the `compareTo` method</p>
+          <p>Utility method checking whether a provided <a href="Principal.html"><code>Principal</code></a> is less than or equal to the current one using the `compare_to` method.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>other: The other <a href="Principal.html"><code>Principal</code></a> to compare with.</p>
+</li></ul>
+
+<p>Returns: `true` if the current <a href="Principal.html"><code>Principal</code></a> is less than or equal to the provided <a href="Principal.html"><code>Principal</code></a>, otherwise `false`.</p>
           
           
 
           
           <div class="method-source-code" id="lt_eq-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 101</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 150</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lt_eq</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-identifier">cmp</span> = <span class="ruby-identifier">compare_to</span>(<span class="ruby-identifier">other</span>)
   <span class="ruby-node">%w[lt eq]</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">cmp</span>)
@@ -541,13 +594,20 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the <a href="Principal.html"><code>Principal</code></a> to an <a href="AccountIdentifier.html"><code>AccountIdentifier</code></a>.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>sub_account: The sub-account identifier. Defaults to 0.</p>
+</li></ul>
+
+<p>Returns: The <a href="AccountIdentifier.html"><code>AccountIdentifier</code></a> instance.</p>
           
           
 
           
           <div class="method-source-code" id="to_account_id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 74</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_account_id</span>(<span class="ruby-identifier">sub_account</span> = <span class="ruby-value">0</span>)
   <span class="ruby-constant">AccountIdentifier</span>.<span class="ruby-identifier">generate</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">sub_account</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -580,7 +640,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 78</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-identifier">to_str</span>
 <span class="ruby-keyword">end</span></pre>
@@ -607,13 +667,15 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the <a href="Principal.html"><code>Principal</code></a> to a string representation.</p>
+
+<p>Returns: The string representation of the <a href="Principal.html"><code>Principal</code></a>.</p>
           
           
 
           
           <div class="method-source-code" id="to_str-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 60</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_str</span>
   <span class="ruby-identifier">checksum</span> = <span class="ruby-constant">Zlib</span>.<span class="ruby-identifier">crc32</span>(<span class="ruby-ivar">@bytes</span>) <span class="ruby-operator">&amp;</span> <span class="ruby-value">0xFFFFFFFF</span>
   <span class="ruby-identifier">b</span> = <span class="ruby-string">&#39;&#39;</span>

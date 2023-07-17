@@ -179,13 +179,22 @@
 
         <div class="method-description">
           
-          
+          <p>Creates a new <a href="DelegateIdentity.html"><code>DelegateIdentity</code></a> instance from JSON representations of the <a href="Identity.html"><code>Identity</code></a> and delegation.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>ic_identity: The JSON representation of the <a href="Identity.html"><code>Identity</code></a>.</p>
+</li><li>
+<p>ic_delegation: The JSON representation of the delegation.</p>
+</li></ul>
+
+<p>Returns: The <a href="DelegateIdentity.html"><code>DelegateIdentity</code></a> instance.</p>
           
           
 
           
           <div class="method-source-code" id="from_json-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 109</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 161</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">from_json</span>(<span class="ruby-identifier">ic_identity</span>, <span class="ruby-identifier">ic_delegation</span>)
   <span class="ruby-identifier">parsed_ic_identity</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">ic_identity</span>)
   <span class="ruby-identifier">parsed_ic_delegation</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">ic_delegation</span>)
@@ -218,13 +227,20 @@
 
         <div class="method-description">
           
-          
+          <p>Initializes a new instance of the <a href="DelegateIdentity.html"><code>DelegateIdentity</code></a> class.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>identity: The <a href="Identity.html"><code>Identity</code></a> associated with the <a href="DelegateIdentity.html"><code>DelegateIdentity</code></a>.</p>
+</li><li>
+<p>delegation: The delegation JSON object containing the delegated keys.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 95</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 131</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">identity</span>, <span class="ruby-identifier">delegation</span>)
   <span class="ruby-ivar">@identity</span> = <span class="ruby-identifier">identity</span>
   <span class="ruby-ivar">@delegations</span> = <span class="ruby-identifier">delegation</span>[<span class="ruby-string">&#39;delegations&#39;</span>].<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-identifier">d</span> }
@@ -289,13 +305,15 @@
 
         <div class="method-description">
           
-          
+          <p>Returns the sender <a href="Principal.html"><code>Principal</code></a> associated with the <a href="DelegateIdentity.html"><code>DelegateIdentity</code></a>.</p>
+
+<p>Returns: The sender <a href="Principal.html"><code>Principal</code></a>.</p>
           
           
 
           
           <div class="method-source-code" id="sender-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 105</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 150</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sender</span>
   <span class="ruby-constant">Principal</span>.<span class="ruby-identifier">self_authenticating</span>(<span class="ruby-ivar">@der_pubkey</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -322,13 +340,20 @@
 
         <div class="method-description">
           
-          
+          <p>Signs a message using the <a href="DelegateIdentity.html"><code>DelegateIdentity</code></a>.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>msg: The message to sign.</p>
+</li></ul>
+
+<p>Returns: An array containing the DER-encoded public key and the signature.</p>
           
           
 
           
           <div class="method-source-code" id="sign-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 101</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sign</span>(<span class="ruby-identifier">msg</span>)
   <span class="ruby-ivar">@identity</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">msg</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -361,7 +386,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 119</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 171</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-node">&quot;(#{@identity.to_s},\n#{@delegations.to_s})&quot;</span>
 <span class="ruby-keyword">end</span></pre>

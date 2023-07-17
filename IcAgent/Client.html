@@ -149,13 +149,18 @@
 
         <div class="method-description">
           
-          
+          <p>Initializes a new instance of the <a href="Client.html"><code>Client</code></a> class.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>url: The URL of the IC agent. Defaults to &#39;<a href="https://ic0.app">ic0.app</a>&#39;.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/client.rb, line 8</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/client.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">url</span> = <span class="ruby-string">&#39;https://ic0.app&#39;</span>)
   <span class="ruby-ivar">@url</span> = <span class="ruby-identifier">url</span>
   <span class="ruby-ivar">@conn</span> = <span class="ruby-constant">Faraday</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">url:</span> <span class="ruby-identifier">url</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">faraday</span><span class="ruby-operator">|</span>
@@ -197,13 +202,24 @@
 
         <div class="method-description">
           
-          
+          <p>Calls a function on a canister.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>canister_id: The ID of the canister to call.</p>
+</li><li>
+<p>req_id: The request ID.</p>
+</li><li>
+<p>data: The data to send with the call.</p>
+</li></ul>
+
+<p>Returns: The request ID.</p>
           
           
 
           
           <div class="method-source-code" id="call-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/client.rb, line 26</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/client.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">call</span>(<span class="ruby-identifier">canister_id</span>, <span class="ruby-identifier">req_id</span>, <span class="ruby-identifier">data</span>)
   <span class="ruby-identifier">endpoint</span> = <span class="ruby-node">&quot;/api/v2/canister/#{canister_id}/call&quot;</span>
   <span class="ruby-identifier">ret</span> = <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">post</span>(<span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">data</span>)
@@ -233,13 +249,22 @@
 
         <div class="method-description">
           
-          
+          <p>Sends a query to a canister.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>canister_id: The ID of the canister to query.</p>
+</li><li>
+<p>data: The data to send with the query.</p>
+</li></ul>
+
+<p>Returns: The response from the canister as a UTF-8 encoded string.</p>
           
           
 
           
           <div class="method-source-code" id="query-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/client.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/client.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">query</span>(<span class="ruby-identifier">canister_id</span>, <span class="ruby-identifier">data</span>)
   <span class="ruby-identifier">endpoint</span> = <span class="ruby-node">&quot;/api/v2/canister/#{canister_id}/query&quot;</span>
   <span class="ruby-identifier">ret</span> = <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">post</span>(<span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">data</span>)
@@ -269,13 +294,22 @@
 
         <div class="method-description">
           
-          
+          <p>Reads the state of a canister.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>canister_id: The ID of the canister to read the state from.</p>
+</li><li>
+<p>data: The data to send with the <a href="Client.html#method-i-read_state"><code>read_state</code></a> request.</p>
+</li></ul>
+
+<p>Returns: The response from the canister as a UTF-8 encoded string.</p>
           
           
 
           
           <div class="method-source-code" id="read_state-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/client.rb, line 33</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/client.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_state</span>(<span class="ruby-identifier">canister_id</span>, <span class="ruby-identifier">data</span>)
   <span class="ruby-identifier">endpoint</span> = <span class="ruby-node">&quot;/api/v2/canister/#{canister_id}/read_state&quot;</span>
   <span class="ruby-identifier">ret</span> = <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">post</span>(<span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">data</span>)
@@ -305,13 +339,20 @@
 
         <div class="method-description">
           
-          
+          <p>Retrieves the status of the IC agent.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>timeout: The timeout for the status request. Defaults to <a href="Client.html#DEFAULT_TIMEOUT_QUERY"><code>DEFAULT_TIMEOUT_QUERY</code></a>.</p>
+</li></ul>
+
+<p>Returns: The response from the status endpoint as a UTF-8 encoded string.</p>
           
           
 
           
           <div class="method-source-code" id="status-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/client.rb, line 40</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/client.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">status</span>(<span class="ruby-value">timeout:</span> <span class="ruby-constant">DEFAULT_TIMEOUT_QUERY</span>)
   <span class="ruby-identifier">endpoint</span> = <span class="ruby-string">&#39;/api/v2/status&#39;</span>
   <span class="ruby-identifier">ret</span> = <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">endpoint</span>, <span class="ruby-value">timeout:</span> <span class="ruby-identifier">timeout</span>)

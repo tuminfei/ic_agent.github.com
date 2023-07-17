@@ -122,13 +122,15 @@
 
         <div class="method-description">
           
-          
+          <p>Signs a request with an identity&#39;s signature and encodes it using CBOR.</p>
+
+<p>@param req [Hash] The request to be signed. @param iden [Identity] The identity used for signing. @return [Array] The request ID and the encoded signed request.</p>
           
           
 
           
           <div class="method-source-code" id="sign_request-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 8</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">sign_request</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">iden</span>)
   <span class="ruby-identifier">req_id</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Utils</span>.<span class="ruby-identifier">to_request_id</span>(<span class="ruby-identifier">req</span>)
   <span class="ruby-identifier">msg</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">IC_REQUEST_DOMAIN_SEPARATOR</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">req_id</span>

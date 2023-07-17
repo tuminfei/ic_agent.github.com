@@ -149,19 +149,28 @@
 
         <div class="method-description">
           
-          
+          <p>Generates a new <a href="AccountIdentifier.html"><code>AccountIdentifier</code></a> from a <a href="Principal.html"><code>Principal</code></a>.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>principal: The <a href="Principal.html"><code>Principal</code></a> associated with the <a href="AccountIdentifier.html"><code>AccountIdentifier</code></a>.</p>
+</li><li>
+<p>sub_account: The sub-account identifier. Defaults to 0.</p>
+</li></ul>
+
+<p>Returns: The <a href="AccountIdentifier.html"><code>AccountIdentifier</code></a> instance.</p>
           
           
 
           
           <div class="method-source-code" id="generate-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 131</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 198</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">generate</span>(<span class="ruby-identifier">principal</span>, <span class="ruby-identifier">sub_account</span> = <span class="ruby-value">0</span>)
   <span class="ruby-identifier">sha224</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA224</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">sha224</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;\naccount-id&quot;</span>
   <span class="ruby-identifier">sha224</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">principal</span>.<span class="ruby-identifier">bytes</span>
   <span class="ruby-identifier">format_sub_account</span> = <span class="ruby-string">&quot;%08d&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">sub_account</span>
-  <span class="ruby-identifier">sub_account</span> = <span class="ruby-identifier">format_sub_account</span>.<span class="ruby-identifier">chars</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">to_i</span>}.<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;N*&#39;</span>)
+  <span class="ruby-identifier">sub_account</span> = <span class="ruby-identifier">format_sub_account</span>.<span class="ruby-identifier">chars</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">to_i</span> }.<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;N*&#39;</span>)
   <span class="ruby-identifier">sha224</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">sub_account</span>
   <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">sha224</span>.<span class="ruby-identifier">digest</span>
   <span class="ruby-identifier">checksum</span> = <span class="ruby-constant">Zlib</span>.<span class="ruby-identifier">crc32</span>(<span class="ruby-identifier">hash</span>) <span class="ruby-operator">&amp;</span> <span class="ruby-value">0xFFFFFFFF</span>
@@ -191,13 +200,18 @@
 
         <div class="method-description">
           
-          
+          <p>Initializes a new instance of the <a href="AccountIdentifier.html"><code>AccountIdentifier</code></a> class.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>hash: The hash representing the <a href="AccountIdentifier.html"><code>AccountIdentifier</code></a>.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 117</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 174</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">hash</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;Invalid hash length&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">32</span>
 
@@ -240,7 +254,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 127</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 187</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-identifier">to_str</span>
 <span class="ruby-keyword">end</span></pre>
@@ -267,13 +281,15 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the <a href="AccountIdentifier.html"><code>AccountIdentifier</code></a> to a string representation.</p>
+
+<p>Returns: The string representation of the <a href="AccountIdentifier.html"><code>AccountIdentifier</code></a>.</p>
           
           
 
           
           <div class="method-source-code" id="to_str-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 123</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/principal.rb, line 183</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_str</span>
   <span class="ruby-string">&#39;0x&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@bytes</span>.<span class="ruby-identifier">unpack1</span>(<span class="ruby-string">&#39;H*&#39;</span>)
 <span class="ruby-keyword">end</span></pre>

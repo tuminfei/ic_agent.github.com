@@ -222,13 +222,20 @@
 
         <div class="method-description">
           
-          
+          <p>Creates a new <a href="Identity.html"><code>Identity</code></a> instance from a seed phrase (mnemonic).</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>mnemonic: The seed phrase (mnemonic) used to generate the identity.</p>
+</li></ul>
+
+<p>Returns: The <a href="Identity.html"><code>Identity</code></a> instance.</p>
           
           
 
           
           <div class="method-source-code" id="from_seed-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 40</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">from_seed</span>(<span class="ruby-identifier">mnemonic</span>)
   <span class="ruby-identifier">seed</span> = <span class="ruby-constant">Bitcoin</span><span class="ruby-operator">::</span><span class="ruby-constant">Trezor</span><span class="ruby-operator">::</span><span class="ruby-constant">Mnemonic</span>.<span class="ruby-identifier">to_seed</span>(<span class="ruby-identifier">mnemonic</span>)
   <span class="ruby-identifier">privkey</span> = <span class="ruby-identifier">seed</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">63</span>]
@@ -258,13 +265,22 @@
 
         <div class="method-description">
           
-          
+          <p>Initializes a new instance of the <a href="Identity.html"><code>Identity</code></a> class.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>privkey: The private key of the identity in hexadecimal format. Defaults to an empty string.</p>
+</li><li>
+<p>type: The key type of the identity. Defaults to &#39;ed25519&#39;.</p>
+</li><li>
+<p>anonymous: A flag indicating whether the identity is anonymous. Defaults to false.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 14</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">privkey</span> = <span class="ruby-string">&#39;&#39;</span>, <span class="ruby-identifier">type</span> = <span class="ruby-string">&#39;ed25519&#39;</span>, <span class="ruby-identifier">anonymous</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">privkey</span> = [<span class="ruby-identifier">privkey</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;H*&#39;</span>)
   <span class="ruby-ivar">@anonymous</span> = <span class="ruby-identifier">anonymous</span>
@@ -349,13 +365,15 @@
 
         <div class="method-description">
           
-          
+          <p>Returns the sender <a href="Principal.html"><code>Principal</code></a> associated with the <a href="Identity.html"><code>Identity</code></a>.</p>
+
+<p>Returns: The sender <a href="Principal.html"><code>Principal</code></a>.</p>
           
           
 
           
           <div class="method-source-code" id="sender-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 47</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sender</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@anonymous</span>
     <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Principal</span>.<span class="ruby-identifier">anonymous</span>
@@ -386,13 +404,20 @@
 
         <div class="method-description">
           
-          
+          <p>Signs a message using the <a href="Identity.html"><code>Identity</code></a>.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>msg: The message to sign.</p>
+</li></ul>
+
+<p>Returns: An array containing the DER-encoded public key and the signature.</p>
           
           
 
           
           <div class="method-source-code" id="sign-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 55</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sign</span>(<span class="ruby-identifier">msg</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@anonymous</span>
     [<span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span>]
@@ -428,13 +453,15 @@
 
         <div class="method-description">
           
-          
+          <p>Returns the PEM-encoded private key of the <a href="Identity.html"><code>Identity</code></a>.</p>
+
+<p>Returns: The PEM-encoded private key.</p>
           
           
 
           
           <div class="method-source-code" id="to_pem-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 76</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_pem</span>
   <span class="ruby-identifier">der</span> = <span class="ruby-ivar">@key_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;secp256k1&#39;</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{IcAgent::IC_PUBKEY_SECP_DER_HERD}#{@sk.data.unpack1(&#39;H*&#39;)}&quot;</span>.<span class="ruby-identifier">hex2str</span> <span class="ruby-operator">:</span> <span class="ruby-node">&quot;#{IcAgent::IC_PUBKEY_ED_DER_HEAD}#{@sk.to_bytes.unpack1(&#39;H*&#39;)}&quot;</span>.<span class="ruby-identifier">hex2str</span>
   <span class="ruby-identifier">b64</span> = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">strict_encode64</span>(<span class="ruby-identifier">der</span>)
@@ -472,7 +499,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 85</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-node">&quot;(#{@key_type}, #{@privkey}, #{@pubkey})&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -503,13 +530,22 @@
 
         <div class="method-description">
           
-          
+          <p>Verifies a message signature using the <a href="Identity.html"><code>Identity</code></a>.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>msg: The message to verify.</p>
+</li><li>
+<p>sig: The signature to verify.</p>
+</li></ul>
+
+<p>Returns: `true` if the signature is valid, otherwise `false`.</p>
           
           
 
           
           <div class="method-source-code" id="verify-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 68</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/identity.rb, line 96</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verify</span>(<span class="ruby-identifier">msg</span>, <span class="ruby-identifier">sig</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@anonymous</span>
     <span class="ruby-keyword">false</span>

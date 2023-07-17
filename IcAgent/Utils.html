@@ -123,13 +123,20 @@
 
         <div class="method-description">
           
-          
+          <p>Decodes a binary blob into a string.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>blob_bytes: The binary blob to decode.</p>
+</li></ul>
+
+<p>Returns: The decoded string.</p>
           
           
 
           
           <div class="method-source-code" id="decode_blob-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 70</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">decode_blob</span>(<span class="ruby-identifier">blob_bytes</span>)
   <span class="ruby-identifier">blob_bytes</span>.<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;C*&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -156,13 +163,20 @@
 
         <div class="method-description">
           
-          
+          <p>Encodes a list of items into a binary string.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>l: The list of items to encode.</p>
+</li></ul>
+
+<p>Returns: The binary string representation of the encoded list.</p>
           
           
 
           
           <div class="method-source-code" id="encode_list-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 6</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">encode_list</span>(<span class="ruby-identifier">l</span>)
   <span class="ruby-identifier">ret</span> = <span class="ruby-string">&#39;&#39;</span>
   <span class="ruby-identifier">l</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
@@ -203,13 +217,20 @@
 
         <div class="method-description">
           
-          
+          <p>Computes a hash value for an IDL string.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>s: The IDL string to hash.</p>
+</li></ul>
+
+<p>Returns: The computed hash value.</p>
           
           
 
           
           <div class="method-source-code" id="idl_hash-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 44</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">idl_hash</span>(<span class="ruby-identifier">s</span>)
   <span class="ruby-identifier">h</span> = <span class="ruby-value">0</span>
   <span class="ruby-identifier">s</span>.<span class="ruby-identifier">bytes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
@@ -240,13 +261,20 @@
 
         <div class="method-description">
           
-          <p>used for sort record by key</p>
+          <p>Computes a hash value for sorting records by key.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>s: The key to hash.</p>
+</li></ul>
+
+<p>Returns: The computed hash value.</p>
           
           
 
           
           <div class="method-source-code" id="label_hash-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">label_hash</span>(<span class="ruby-identifier">s</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/(^_\d+_$)|(^_0x[0-9a-fA-F]+_$)/</span>
     <span class="ruby-identifier">num</span> = <span class="ruby-identifier">s</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-2</span>]
@@ -288,13 +316,20 @@
 
         <div class="method-description">
           
-          
+          <p>Converts a data structure into a request ID.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>d: The data structure to convert.</p>
+</li></ul>
+
+<p>Returns: The request ID as a binary string.</p>
           
           
 
           
           <div class="method-source-code" id="to_request_id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 52</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/utils.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">to_request_id</span>(<span class="ruby-identifier">d</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
 
