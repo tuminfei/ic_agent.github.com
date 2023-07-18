@@ -102,6 +102,8 @@
 
   <section class="description">
     
+<p>Represents an IDL Nat</p>
+
   </section>
 
   
@@ -145,7 +147,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 378</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 386</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
   <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
@@ -186,7 +188,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 382</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 390</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-identifier">x</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -219,7 +221,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 394</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 402</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">pipe</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">check_type</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Candid</span>.<span class="ruby-identifier">leb128u_decode</span>(<span class="ruby-identifier">pipe</span>)
@@ -253,7 +255,7 @@
 
           
           <div class="method-source-code" id="encode_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 390</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 398</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_type</span>(<span class="ruby-identifier">type_table</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Nat</span>).<span class="ruby-identifier">string</span>
 <span class="ruby-keyword">end</span></pre>
@@ -286,7 +288,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 386</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 394</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-identifier">val</span>).<span class="ruby-identifier">string</span>
 <span class="ruby-keyword">end</span></pre>
@@ -319,7 +321,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 403</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 411</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Nat</span>
 <span class="ruby-keyword">end</span></pre>
@@ -352,7 +354,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 399</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 407</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-string">&#39;nat&#39;</span>
 <span class="ruby-keyword">end</span></pre>

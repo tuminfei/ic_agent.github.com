@@ -102,6 +102,8 @@
 
   <section class="description">
     
+<p>Represents an IDL fixed-width Nat(n)</p>
+
   </section>
 
   
@@ -145,7 +147,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 539</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 550</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">bits</span>)
   <span class="ruby-keyword">super</span>()
   <span class="ruby-ivar">@bits</span> = <span class="ruby-identifier">bits</span>
@@ -190,7 +192,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 547</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 558</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-identifier">max_val</span> = <span class="ruby-value">-1</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span><span class="ruby-operator">**</span><span class="ruby-ivar">@bits</span>
   <span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">max_val</span>
@@ -224,7 +226,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 573</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 584</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">check_type</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">by</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Candid</span>.<span class="ruby-identifier">safe_read</span>(<span class="ruby-identifier">b</span>, <span class="ruby-ivar">@bits</span> <span class="ruby-operator">/</span> <span class="ruby-value">8</span>)
@@ -270,7 +272,7 @@
 
           
           <div class="method-source-code" id="encode_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 568</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 579</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_type</span>(<span class="ruby-identifier">type_table</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">offset</span> = <span class="ruby-constant">Math</span>.<span class="ruby-identifier">log2</span>(<span class="ruby-ivar">@bits</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-value">3</span>
   <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-value">-5</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">offset</span>).<span class="ruby-identifier">string</span>
@@ -304,7 +306,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 552</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 563</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-ivar">@bits</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">8</span>
@@ -349,7 +351,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 594</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 605</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-keyword">case</span> <span class="ruby-ivar">@bits</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">8</span>
@@ -391,7 +393,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 590</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 601</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-node">&quot;nat#{@bits}&quot;</span>
 <span class="ruby-keyword">end</span></pre>

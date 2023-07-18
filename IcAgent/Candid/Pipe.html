@@ -138,7 +138,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1235</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1255</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">buffer</span> = <span class="ruby-string">&#39;&#39;</span>, <span class="ruby-identifier">length</span> = <span class="ruby-value">0</span>)
   <span class="ruby-ivar">@buffer</span> = <span class="ruby-identifier">buffer</span>
   <span class="ruby-ivar">@view</span> = <span class="ruby-identifier">buffer</span>[<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">size</span>]
@@ -180,7 +180,7 @@
 
           
           <div class="method-source-code" id="buffer-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1240</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1260</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">buffer</span>
   <span class="ruby-ivar">@view</span>
 <span class="ruby-keyword">end</span></pre>
@@ -213,7 +213,7 @@
 
           
           <div class="method-source-code" id="end-3F-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1248</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1268</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">end?</span>
   <span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -246,7 +246,7 @@
 
           
           <div class="method-source-code" id="length-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1244</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1264</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">length</span>
   <span class="ruby-ivar">@view</span>.<span class="ruby-identifier">size</span>
 <span class="ruby-keyword">end</span></pre>
@@ -279,7 +279,7 @@
 
           
           <div class="method-source-code" id="read-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1252</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1272</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read</span>(<span class="ruby-identifier">num</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@view</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">num</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ValueError</span>, <span class="ruby-string">&#39;Wrong: out of bound&#39;</span>
@@ -319,7 +319,7 @@
 
           
           <div class="method-source-code" id="readbyte-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1263</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1283</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">readbyte</span>
   <span class="ruby-identifier">res</span> = <span class="ruby-ivar">@view</span>[<span class="ruby-value">0</span>, <span class="ruby-value">2</span>]
   <span class="ruby-ivar">@view</span> = <span class="ruby-ivar">@view</span>[<span class="ruby-value">2</span><span class="ruby-operator">...</span><span class="ruby-ivar">@view</span>.<span class="ruby-identifier">length</span>]

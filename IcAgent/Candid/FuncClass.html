@@ -106,6 +106,8 @@
 
   <section class="description">
     
+<p>Represents an IDL Func reference</p>
+
   </section>
 
   
@@ -196,7 +198,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1079</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1098</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">arg_types</span>, <span class="ruby-identifier">ret_types</span>, <span class="ruby-identifier">annotations</span>)
   <span class="ruby-keyword">super</span>()
   <span class="ruby-ivar">@arg_types</span> = <span class="ruby-identifier">arg_types</span>
@@ -240,7 +242,7 @@
 
           
           <div class="method-source-code" id="_build_type_table_impl-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1111</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1130</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">_build_type_table_impl</span>(<span class="ruby-identifier">type_table</span>)
   <span class="ruby-ivar">@arg_types</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">build_type_table</span>(<span class="ruby-identifier">type_table</span>) }
   <span class="ruby-ivar">@ret_types</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ret</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">build_type_table</span>(<span class="ruby-identifier">type_table</span>) }
@@ -286,7 +288,7 @@
 
           
           <div class="method-source-code" id="_encode_annotation-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1162</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1181</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">_encode_annotation</span>(<span class="ruby-identifier">ann</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">ann</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;query&#39;</span>
     <span class="ruby-keyword">return</span> [<span class="ruby-value">1</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;C&#39;</span>)
@@ -325,7 +327,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1086</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-identifier">x</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&amp;&amp;</span>
     (<span class="ruby-identifier">x</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Principal</span>.<span class="ruby-identifier">from_str</span>(<span class="ruby-identifier">x</span>[<span class="ruby-value">0</span>]) <span class="ruby-operator">:</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Principal</span>.<span class="ruby-identifier">from_hex</span>(<span class="ruby-identifier">x</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&#39;H*&#39;</span>).<span class="ruby-identifier">first</span>)).<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Principal</span>) <span class="ruby-operator">&amp;&amp;</span>
@@ -360,7 +362,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1128</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1147</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">x</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Candid</span>.<span class="ruby-identifier">safe_read_byte</span>(<span class="ruby-identifier">b</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;Cannot decode function reference&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;01&#39;</span>
@@ -405,7 +407,7 @@
 
           
           <div class="method-source-code" id="display-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1155</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1174</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display</span>
   <span class="ruby-identifier">args</span> = <span class="ruby-ivar">@arg_types</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">display</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>)
   <span class="ruby-identifier">rets</span> = <span class="ruby-ivar">@ret_types</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ret</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">display</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>)
@@ -441,7 +443,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1092</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">vals</span>)
   <span class="ruby-identifier">principal</span> = <span class="ruby-identifier">vals</span>[<span class="ruby-value">0</span>]
   <span class="ruby-identifier">method_name</span> = <span class="ruby-identifier">vals</span>[<span class="ruby-value">1</span>]
@@ -489,7 +491,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1151</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1170</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Func</span>
 <span class="ruby-keyword">end</span></pre>
@@ -522,7 +524,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1144</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1163</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-identifier">args</span> = <span class="ruby-ivar">@arg_types</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">name</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>)
   <span class="ruby-identifier">rets</span> = <span class="ruby-ivar">@ret_types</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ret</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">name</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>)

@@ -102,6 +102,8 @@
 
   <section class="description">
     
+<p>Represents an IDL Service reference</p>
+
   </section>
 
   
@@ -145,7 +147,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1174</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1194</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">field</span>)
   <span class="ruby-keyword">super</span>()
   <span class="ruby-ivar">@fields</span> = <span class="ruby-constant">Hash</span>[<span class="ruby-identifier">field</span>.<span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">_</span><span class="ruby-operator">|</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Utils</span>.<span class="ruby-identifier">label_hash</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>) }]
@@ -187,7 +189,7 @@
 
           
           <div class="method-source-code" id="_build_type_table_impl-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1203</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1223</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">_build_type_table_impl</span>(<span class="ruby-identifier">type_table</span>)
   <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">build_type_table</span>(<span class="ruby-identifier">type_table</span>) }
   <span class="ruby-identifier">op_code</span> = <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Service</span>).<span class="ruby-identifier">string</span>
@@ -227,7 +229,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1179</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1199</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
     <span class="ruby-identifier">p</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Principal</span>.<span class="ruby-identifier">from_str</span>(<span class="ruby-identifier">x</span>)
@@ -267,7 +269,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1214</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1234</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Candid</span>.<span class="ruby-identifier">safe_read_byte</span>(<span class="ruby-identifier">b</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;Cannot decode principal&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">res</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;01&#39;</span>
@@ -304,7 +306,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1190</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1210</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-identifier">tag</span> = [<span class="ruby-value">1</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;C&#39;</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
@@ -346,7 +348,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1227</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1247</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Service</span>
 <span class="ruby-keyword">end</span></pre>
@@ -379,7 +381,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1222</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1242</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-identifier">fields</span> = <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k} : #{v.name}&quot;</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>)
   <span class="ruby-node">&quot;service #{fields}&quot;</span>

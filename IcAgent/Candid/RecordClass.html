@@ -106,6 +106,8 @@
 
   <section class="description">
     
+<p>Represents an IDL Record</p>
+
   </section>
 
   
@@ -149,7 +151,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 760</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 775</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">field</span>)
   <span class="ruby-keyword">super</span>()
   <span class="ruby-ivar">@fields</span> = <span class="ruby-identifier">field</span>.<span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">_v</span><span class="ruby-operator">|</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Utils</span>.<span class="ruby-identifier">label_hash</span>(<span class="ruby-identifier">k</span>) }.<span class="ruby-identifier">to_h</span>
@@ -191,7 +193,7 @@
 
           
           <div class="method-source-code" id="_build_type_table_impl-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 793</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 808</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">_build_type_table_impl</span>(<span class="ruby-identifier">type_table</span>)
   <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">field_value</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">field_value</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:build_type_table</span>, <span class="ruby-identifier">type_table</span>)
@@ -234,7 +236,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 777</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 792</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;Expected dict type input.&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
 
@@ -274,7 +276,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 807</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 822</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">record</span> = <span class="ruby-identifier">check_type</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;Not a record type&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">record</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">RecordClass</span>)
@@ -328,7 +330,7 @@
 
           
           <div class="method-source-code" id="display-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 841</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 856</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display</span>
   <span class="ruby-identifier">d</span> = {}
   <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">d</span>[<span class="ruby-identifier">v</span>] = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">display</span> }
@@ -363,7 +365,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 788</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 803</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-identifier">bufs</span> = <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">encode_value</span>(<span class="ruby-identifier">val</span>[<span class="ruby-identifier">k</span>]) }
   <span class="ruby-identifier">bufs</span>.<span class="ruby-identifier">join</span>.<span class="ruby-identifier">b</span>
@@ -397,7 +399,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 837</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 852</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Record</span>
 <span class="ruby-keyword">end</span></pre>
@@ -430,7 +432,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 832</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 847</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-identifier">fields</span> = <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k}:#{v.name}&quot;</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;;&#39;</span>)
   <span class="ruby-node">&quot;record {#{fields}}&quot;</span>
@@ -464,7 +466,7 @@
 
           
           <div class="method-source-code" id="try_as_tuple-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 765</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 780</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">try_as_tuple</span>
   <span class="ruby-identifier">res</span> = []
   <span class="ruby-identifier">idx</span> = <span class="ruby-value">0</span>

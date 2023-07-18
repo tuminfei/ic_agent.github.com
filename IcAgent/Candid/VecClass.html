@@ -104,6 +104,8 @@
 
   <section class="description">
     
+<p>Represents an IDL Array</p>
+
   </section>
 
   
@@ -147,7 +149,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 662</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 675</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">_type</span>)
   <span class="ruby-keyword">super</span>()
   <span class="ruby-ivar">@interior_type</span> = <span class="ruby-identifier">_type</span>
@@ -189,7 +191,7 @@
 
           
           <div class="method-source-code" id="_build_type_table_impl-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 677</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 690</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">_build_type_table_impl</span>(<span class="ruby-identifier">type_table</span>)
   <span class="ruby-ivar">@interior_type</span>.<span class="ruby-identifier">build_type_table</span>(<span class="ruby-identifier">type_table</span>)
   <span class="ruby-identifier">op_code</span> = <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Vec</span>).<span class="ruby-identifier">string</span>
@@ -225,7 +227,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 667</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 680</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-identifier">x</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Enumerable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@interior_type</span>.<span class="ruby-identifier">covariant</span>(<span class="ruby-identifier">item</span>) }
 <span class="ruby-keyword">end</span></pre>
@@ -258,7 +260,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 684</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 697</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">vec</span> = <span class="ruby-identifier">check_type</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;Not a vector type&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">vec</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">VecClass</span>)
@@ -297,7 +299,7 @@
 
           
           <div class="method-source-code" id="display-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 702</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 715</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display</span>
   <span class="ruby-node">&quot;vec #{@interior_type.display}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -330,7 +332,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 671</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 684</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-identifier">length</span> = <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-identifier">val</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">string</span>
   <span class="ruby-identifier">vec</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@interior_type</span>.<span class="ruby-identifier">encode_value</span>(<span class="ruby-identifier">v</span>) }
@@ -365,7 +367,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 698</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 711</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Vec</span>
 <span class="ruby-keyword">end</span></pre>
@@ -398,7 +400,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 694</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 707</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-node">&quot;vec (#{@interior_type.name})&quot;</span>
 <span class="ruby-keyword">end</span></pre>

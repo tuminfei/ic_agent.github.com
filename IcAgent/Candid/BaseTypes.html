@@ -144,7 +144,7 @@
 
           
           <div class="method-source-code" id="func-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1338</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1358</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">func</span>(<span class="ruby-identifier">args</span>, <span class="ruby-identifier">ret</span>, <span class="ruby-identifier">annotations</span>)
   <span class="ruby-constant">FuncClass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">args</span>, <span class="ruby-identifier">ret</span>, <span class="ruby-identifier">annotations</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -177,7 +177,7 @@
 
           
           <div class="method-source-code" id="method_missing-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1271</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1291</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">method_missing</span>(<span class="ruby-identifier">method_name</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">method_name</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;null&#39;</span>
@@ -249,7 +249,7 @@
 
           
           <div class="method-source-code" id="opt-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1322</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1342</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">opt</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-constant">OptClass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">t</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -282,7 +282,7 @@
 
           
           <div class="method-source-code" id="rec-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1334</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1354</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">rec</span>
   <span class="ruby-constant">RecClass</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -315,7 +315,7 @@
 
           
           <div class="method-source-code" id="record-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1326</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1346</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">record</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-constant">RecordClass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">t</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -348,7 +348,7 @@
 
           
           <div class="method-source-code" id="service-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1342</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1362</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">service</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-constant">ServiceClass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">t</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -381,7 +381,7 @@
 
           
           <div class="method-source-code" id="tuple-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1314</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1334</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">tuple</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">types</span>)
   <span class="ruby-constant">TupleClass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">types</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -414,7 +414,7 @@
 
           
           <div class="method-source-code" id="variant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1330</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1350</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">variant</span>(<span class="ruby-identifier">fields</span>)
   <span class="ruby-constant">VariantClass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">fields</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -447,7 +447,7 @@
 
           
           <div class="method-source-code" id="vec-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1318</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1338</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">vec</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-constant">VecClass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">t</span>)
 <span class="ruby-keyword">end</span></pre>

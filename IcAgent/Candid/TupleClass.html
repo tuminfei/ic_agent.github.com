@@ -100,6 +100,8 @@
 
   <section class="description">
     
+<p>Represents Tuple, a syntactic sugar for Record.</p>
+
   </section>
 
   
@@ -164,7 +166,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 851</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 867</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">_components</span>)
   <span class="ruby-identifier">x</span> = {}
   <span class="ruby-identifier">_components</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">v</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
@@ -210,7 +212,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 860</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 876</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ValueError</span>, <span class="ruby-string">&#39;Expected tuple type input.&#39;</span>
@@ -252,7 +254,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 881</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 897</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">tup</span> = <span class="ruby-identifier">check_type</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">tup</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">TupleClass</span>)
@@ -301,7 +303,7 @@
 
           
           <div class="method-source-code" id="display-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 905</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 921</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display</span>
   <span class="ruby-identifier">d</span> = <span class="ruby-ivar">@components</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">display</span>() }
   <span class="ruby-node">&quot;record {#{d.join(&#39;;&#39;)}}&quot;</span>
@@ -335,7 +337,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 873</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 889</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-identifier">bufs</span> = <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">b</span>
   <span class="ruby-ivar">@components</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
@@ -372,7 +374,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 901</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 917</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Tuple</span>
 <span class="ruby-keyword">end</span></pre>

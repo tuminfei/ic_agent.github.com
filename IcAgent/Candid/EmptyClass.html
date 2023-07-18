@@ -102,6 +102,8 @@
 
   <section class="description">
     
+<p>Represents an IDL Empty, a type which has no inhabitants.</p>
+
   </section>
 
   
@@ -145,7 +147,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 209</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 212</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
   <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
@@ -186,7 +188,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 213</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 216</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
@@ -219,7 +221,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 225</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 228</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ValueError</span>, <span class="ruby-string">&#39;Empty cannot appear as an output&#39;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -252,7 +254,7 @@
 
           
           <div class="method-source-code" id="encode_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 221</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 224</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_type</span>(<span class="ruby-identifier">type_table</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Empty</span>).<span class="ruby-identifier">string</span>
 <span class="ruby-keyword">end</span></pre>
@@ -285,7 +287,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 217</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 220</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ValueError</span>, <span class="ruby-string">&#39;Empty cannot appear as a function argument&#39;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -318,7 +320,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 233</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 236</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Empty</span>
 <span class="ruby-keyword">end</span></pre>
@@ -351,7 +353,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 229</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 232</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-string">&#39;empty&#39;</span>
 <span class="ruby-keyword">end</span></pre>

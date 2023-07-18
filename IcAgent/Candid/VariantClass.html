@@ -104,6 +104,8 @@
 
   <section class="description">
     
+<p>Represents an IDL Variant</p>
+
   </section>
 
   
@@ -168,7 +170,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 914</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 931</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">field</span>)
   <span class="ruby-keyword">super</span>()
   <span class="ruby-ivar">@fields</span> = <span class="ruby-identifier">field</span>.<span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">kv</span><span class="ruby-operator">|</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Utils</span>.<span class="ruby-identifier">label_hash</span>(<span class="ruby-identifier">kv</span>[<span class="ruby-value">0</span>]) }.<span class="ruby-identifier">to_h</span>
@@ -210,7 +212,7 @@
 
           
           <div class="method-source-code" id="_build_type_table_impl-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 945</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 962</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">_build_type_table_impl</span>(<span class="ruby-identifier">type_table</span>)
   <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">v</span>.<span class="ruby-identifier">build_type_table</span>(<span class="ruby-identifier">type_table</span>)
@@ -252,7 +254,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 919</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 936</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
 
@@ -293,7 +295,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 958</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 975</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">variant</span> = <span class="ruby-identifier">check_type</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;Not a variant type&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">variant</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">VariantClass</span>)
@@ -345,7 +347,7 @@
 
           
           <div class="method-source-code" id="display-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 990</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1007</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display</span>
   <span class="ruby-identifier">d</span> = {}
   <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
@@ -382,7 +384,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 931</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 948</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-identifier">idx</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">ty</span><span class="ruby-operator">|</span>
@@ -425,7 +427,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 986</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1003</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Variant</span>
 <span class="ruby-keyword">end</span></pre>
@@ -458,7 +460,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 981</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 998</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-identifier">fields</span> = <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k}:#{v.name || &#39;&#39;}&quot;</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;;&#39;</span>)
   <span class="ruby-node">&quot;variant {#{fields}}&quot;</span>

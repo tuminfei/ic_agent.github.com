@@ -108,6 +108,8 @@
 
   <section class="description">
     
+<p>Represents a reference to an IDL type, used for defining recursive data types.</p>
+
   </section>
 
   
@@ -151,7 +153,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1002</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1020</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
   <span class="ruby-keyword">super</span>()
   <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">@@counter</span>
@@ -195,7 +197,7 @@
 
           
           <div class="method-source-code" id="_build_type_table_impl-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1043</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1061</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">_build_type_table_impl</span>(<span class="ruby-identifier">type_table</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;Recursive type uninitialized&#39;</span>
@@ -236,7 +238,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1021</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1039</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">nil?</span>
 
@@ -271,7 +273,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1055</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1073</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;Recursive type uninitialized&#39;</span>
@@ -308,7 +310,7 @@
 
           
           <div class="method-source-code" id="display-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1067</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1085</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;Recursive type uninitialized&#39;</span>
@@ -350,7 +352,7 @@
 
           
           <div class="method-source-code" id="encode_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1035</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1053</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_type</span>(<span class="ruby-identifier">type_table</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">PrimitiveType</span>)
     <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">encode_type</span>(<span class="ruby-identifier">type_table</span>)
@@ -387,7 +389,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1027</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1045</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;Recursive type uninitialized&#39;</span>
@@ -424,7 +426,7 @@
 
           
           <div class="method-source-code" id="fill-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1009</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1027</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fill</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-ivar">@type</span> = <span class="ruby-identifier">t</span>
 <span class="ruby-keyword">end</span></pre>
@@ -457,7 +459,7 @@
 
           
           <div class="method-source-code" id="get_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1013</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1031</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_type</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">RecClass</span>)
     <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">get_type</span>
@@ -494,7 +496,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1063</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1081</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-node">&quot;rec_#{@id}&quot;</span>
 <span class="ruby-keyword">end</span></pre>

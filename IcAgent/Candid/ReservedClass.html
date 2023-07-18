@@ -102,6 +102,8 @@
 
   <section class="description">
     
+<p>Represents an IDL Reserved</p>
+
   </section>
 
   
@@ -145,7 +147,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 279</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 284</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
   <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
@@ -186,7 +188,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 283</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 288</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
@@ -219,7 +221,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 295</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 300</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">name</span>
     <span class="ruby-identifier">t</span>.<span class="ruby-identifier">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
@@ -255,7 +257,7 @@
 
           
           <div class="method-source-code" id="encode_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 291</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 296</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_type</span>(<span class="ruby-identifier">type_table</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Reserved</span>).<span class="ruby-identifier">string</span>
 <span class="ruby-keyword">end</span></pre>
@@ -288,7 +290,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 287</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 292</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>
   <span class="ruby-string">&#39;&#39;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -321,7 +323,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 306</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 311</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Reserved</span>
 <span class="ruby-keyword">end</span></pre>
@@ -354,7 +356,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 302</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 307</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-string">&#39;reserved&#39;</span>
 <span class="ruby-keyword">end</span></pre>

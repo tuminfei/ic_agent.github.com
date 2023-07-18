@@ -104,6 +104,8 @@
 
   <section class="description">
     
+<p>Represents an IDL Option</p>
+
   </section>
 
   
@@ -147,7 +149,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 708</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 722</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">_type</span>)
   <span class="ruby-keyword">super</span>()
   <span class="ruby-ivar">@type</span> = <span class="ruby-identifier">_type</span>
@@ -189,7 +191,7 @@
 
           
           <div class="method-source-code" id="_build_type_table_impl-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 725</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 739</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">_build_type_table_impl</span>(<span class="ruby-identifier">type_table</span>)
   <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">build_type_table</span>(<span class="ruby-identifier">type_table</span>)
   <span class="ruby-identifier">op_code</span> = <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Opt</span>).<span class="ruby-identifier">string</span>
@@ -225,7 +227,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 713</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 727</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-identifier">x</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">x</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">covariant</span>(<span class="ruby-identifier">x</span>[<span class="ruby-value">0</span>])))
 <span class="ruby-keyword">end</span></pre>
@@ -258,7 +260,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 732</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 746</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">opt</span> = <span class="ruby-identifier">check_type</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ValueError</span>, <span class="ruby-string">&#39;Not an option type&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">OptClass</span>)
@@ -301,7 +303,7 @@
 
           
           <div class="method-source-code" id="display-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 754</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 768</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display</span>
   <span class="ruby-node">&quot;opt (#{@type.display})&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -334,7 +336,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 717</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 731</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-string">&quot;\x00&quot;</span>.<span class="ruby-identifier">b</span>
@@ -371,7 +373,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 750</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 764</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Opt</span>
 <span class="ruby-keyword">end</span></pre>
@@ -404,7 +406,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 746</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 760</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-node">&quot;opt (#{@type.name})&quot;</span>
 <span class="ruby-keyword">end</span></pre>

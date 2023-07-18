@@ -102,6 +102,8 @@
 
   <section class="description">
     
+<p>Represents an IDL Text</p>
+
   </section>
 
   
@@ -145,7 +147,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 312</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 318</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
   <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
@@ -186,7 +188,7 @@
 
           
           <div class="method-source-code" id="covariant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 316</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 322</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covariant</span>(<span class="ruby-identifier">x</span>)
   <span class="ruby-identifier">x</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -219,7 +221,7 @@
 
           
           <div class="method-source-code" id="decode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 330</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 336</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decode_value</span>(<span class="ruby-identifier">b</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">check_type</span>(<span class="ruby-identifier">t</span>)
   <span class="ruby-identifier">length</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Candid</span>.<span class="ruby-identifier">leb128u_decode</span>(<span class="ruby-identifier">b</span>).<span class="ruby-identifier">to_i</span>
@@ -255,7 +257,7 @@
 
           
           <div class="method-source-code" id="encode_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 326</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 332</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_type</span>(<span class="ruby-identifier">type_table</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>).<span class="ruby-identifier">string</span>
 <span class="ruby-keyword">end</span></pre>
@@ -288,7 +290,7 @@
 
           
           <div class="method-source-code" id="encode_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 320</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 326</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">encode_value</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-identifier">buf</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>)
   <span class="ruby-identifier">length</span> = <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-identifier">buf</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">string</span>
@@ -323,7 +325,7 @@
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 341</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 347</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">id</span>
   <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Text</span>
 <span class="ruby-keyword">end</span></pre>
@@ -356,7 +358,7 @@
 
           
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 337</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 343</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span>
   <span class="ruby-string">&#39;text&#39;</span>
 <span class="ruby-keyword">end</span></pre>

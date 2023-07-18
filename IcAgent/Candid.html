@@ -182,7 +182,7 @@
 
           
           <div class="method-source-code" id="build_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1396</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1417</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">build_type</span>(<span class="ruby-identifier">raw_table</span>, <span class="ruby-identifier">table</span>, <span class="ruby-identifier">entry</span>)
   <span class="ruby-identifier">ty</span> = <span class="ruby-identifier">entry</span>[<span class="ruby-value">0</span>]
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">ty</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TypeIds</span><span class="ruby-operator">::</span><span class="ruby-constant">Vec</span>
@@ -266,13 +266,13 @@
 
         <div class="method-description">
           
-          <p>decode a bytes value def decode(retTypes, data):</p>
+          <p>@param [Object] data: decode a bytes value @param [nil] ret_types def decode(retTypes, data):</p>
           
           
 
           
           <div class="method-source-code" id="decode-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1622</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1644</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">decode</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">ret_types</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">pipe</span> = <span class="ruby-constant">Pipe</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">data</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">PREFIX</span>.<span class="ruby-identifier">length</span>
@@ -318,8 +318,7 @@
                      <span class="ruby-string">&#39;value&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">decode_value</span>(<span class="ruby-identifier">pipe</span>, <span class="ruby-identifier">types</span>[<span class="ruby-identifier">i</span>])
                    })
   <span class="ruby-keyword">end</span>
-
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">outputs</span>
+  <span class="ruby-identifier">outputs</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -344,13 +343,13 @@
 
         <div class="method-description">
           
-          <p>params = [{type, value}] data = b&#39;DIDL&#39; + len(params) + encoded types + encoded values</p>
+          <p>@param [Object] params = [{type, value}] @return data = b&#39;DIDL&#39; + len(params) + encoded types + encoded values</p>
           
           
 
           
           <div class="method-source-code" id="encode-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1580</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1601</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">encode</span>(<span class="ruby-identifier">params</span>)
   <span class="ruby-identifier">arg_types</span> = []
   <span class="ruby-identifier">args</span> = []
@@ -419,7 +418,7 @@
 
           
           <div class="method-source-code" id="get_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1523</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1544</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_type</span>(<span class="ruby-identifier">raw_table</span>, <span class="ruby-identifier">table</span>, <span class="ruby-identifier">t</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">t</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">-24</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ValueError</span>, <span class="ruby-string">&#39;not supported type&#39;</span>
@@ -503,7 +502,7 @@
 
           
           <div class="method-source-code" id="leb128_string_hex-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1388</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1409</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">leb128_string_hex</span>(<span class="ruby-identifier">p_str</span>)
   <span class="ruby-constant">LEB128</span>.<span class="ruby-identifier">encode_signed</span>(<span class="ruby-identifier">p_str</span>).<span class="ruby-identifier">string</span>.<span class="ruby-identifier">to_hex</span>
 <span class="ruby-keyword">end</span></pre>
@@ -536,7 +535,7 @@
 
           
           <div class="method-source-code" id="leb128i_decode-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1358</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1379</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">leb128i_decode</span>(<span class="ruby-identifier">pipe</span>)
   <span class="ruby-identifier">length</span> = <span class="ruby-identifier">pipe</span>.<span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">length</span>
   <span class="ruby-identifier">count</span> = <span class="ruby-value">0</span>
@@ -577,13 +576,13 @@
 
         <div class="method-description">
           
-          
+          <p>through <a href="Candid/Pipe.html"><code>Pipe</code></a> to decode bytes</p>
           
           
 
           
           <div class="method-source-code" id="leb128u_decode-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1347</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1368</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">leb128u_decode</span>(<span class="ruby-identifier">pipe</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
@@ -623,7 +622,7 @@
 
           
           <div class="method-source-code" id="read_type_table-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1457</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1478</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">read_type_table</span>(<span class="ruby-identifier">pipe</span>)
   <span class="ruby-identifier">type_table</span> = []
 
@@ -718,7 +717,7 @@
 
           
           <div class="method-source-code" id="safe_read-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1376</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1397</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">safe_read</span>(<span class="ruby-identifier">pipe</span>, <span class="ruby-identifier">num</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;unexpected end of buffer&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">pipe</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">num</span>
 
@@ -753,7 +752,7 @@
 
           
           <div class="method-source-code" id="safe_read_byte-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1382</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1403</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">safe_read_byte</span>(<span class="ruby-identifier">pipe</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;unexpected end of buffer&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">pipe</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
 
@@ -788,7 +787,7 @@
 
           
           <div class="method-source-code" id="unicode_to_hex-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1392</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/candid.rb, line 1413</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">unicode_to_hex</span>(<span class="ruby-identifier">u_code</span>)
   <span class="ruby-identifier">u_code</span>.<span class="ruby-identifier">to_hex</span>
 <span class="ruby-keyword">end</span></pre>
