@@ -99,8 +99,6 @@
     
     <li ><a href="#method-i-read_state_raw">#read_state_raw</a>
     
-    <li ><a href="#method-i-read_state_raw_and_verify">#read_state_raw_and_verify</a>
-    
     <li ><a href="#method-i-request_status_raw">#request_status_raw</a>
     
     <li ><a href="#method-i-update_raw">#update_raw</a>
@@ -314,7 +312,7 @@
 
           
           <div class="method-source-code" id="check_delegation-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 292</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 268</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">check_delegation</span>(<span class="ruby-identifier">delegation</span>, <span class="ruby-identifier">effective_canister_id</span>, <span class="ruby-identifier">disable_range_check</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@root_key</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">delegation</span>
 
@@ -377,7 +375,7 @@
 
           
           <div class="method-source-code" id="extract_der-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 333</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 309</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">extract_der</span>(<span class="ruby-identifier">der_buf</span>)
   <span class="ruby-identifier">bls_der_prefix</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">BN</span>.<span class="ruby-identifier">from_hex</span>(<span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">BLS_DER_PREFIX</span>).<span class="ruby-identifier">to_s</span>(<span class="ruby-value">2</span>)
   <span class="ruby-identifier">expected_length</span> = <span class="ruby-identifier">bls_der_prefix</span>.<span class="ruby-identifier">bytesize</span> <span class="ruby-operator">+</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">BLS_KEY_LENGTH</span>
@@ -493,7 +491,7 @@
 
           
           <div class="method-source-code" id="poll-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 255</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 228</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">poll</span>(<span class="ruby-identifier">canister_id</span>, <span class="ruby-identifier">req_id</span>, <span class="ruby-identifier">delay</span> = <span class="ruby-value">1</span>, <span class="ruby-identifier">timeout</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_POLL_TIMEOUT_SECS</span>)
   <span class="ruby-identifier">status</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">cert</span> = <span class="ruby-keyword">nil</span>
@@ -545,7 +543,7 @@
 
           
           <div class="method-source-code" id="principal_is_within_ranges-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 326</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 302</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">principal_is_within_ranges</span>(<span class="ruby-identifier">principal</span>, <span class="ruby-identifier">ranges</span>)
   <span class="ruby-identifier">ranges</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">range</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">range</span>[<span class="ruby-string">&#39;low&#39;</span>].<span class="ruby-identifier">lt_eq</span>(<span class="ruby-identifier">principal</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">range</span>[<span class="ruby-string">&#39;high&#39;</span>].<span class="ruby-identifier">gt_eq</span>(<span class="ruby-identifier">principal</span>)
@@ -703,7 +701,7 @@
         
         <div class="method-heading">
           <span class="method-name">read_state_raw</span><span
-            class="method-args">(canister_id, paths)</span>
+            class="method-args">(canister_id, paths, bls_verify = true)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -714,68 +712,14 @@
           
           <p>Sends a raw read state request to a canister and handles the response.</p>
 
-<p>@param canister_id [String] The ID of the target canister. @param paths [Array] The paths to read from the canister&#39;s state. @return [Object] The decoded response from the canister.</p>
+<p>@param canister_id [String] The ID of the target canister. @param paths [Array] The paths to read from the canister&#39;s state. @param [TrueClass] bls_verify @return [Object] The decoded response from the canister.</p>
           
           
 
           
           <div class="method-source-code" id="read_state_raw-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 180</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_state_raw</span>(<span class="ruby-identifier">canister_id</span>, <span class="ruby-identifier">paths</span>)
-  <span class="ruby-identifier">req</span> = {
-    <span class="ruby-string">&#39;request_type&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;read_state&#39;</span>,
-    <span class="ruby-string">&#39;sender&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@identity</span>.<span class="ruby-identifier">sender</span>.<span class="ruby-identifier">bytes</span>,
-    <span class="ruby-string">&#39;paths&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">paths</span>,
-    <span class="ruby-string">&#39;ingress_expiry&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">get_expiry_date</span>
-  }
-  <span class="ruby-identifier">_</span>, <span class="ruby-identifier">data</span> = <span class="ruby-constant">Request</span>.<span class="ruby-identifier">sign_request</span>(<span class="ruby-identifier">req</span>, <span class="ruby-ivar">@identity</span>)
-  <span class="ruby-identifier">ret</span> = <span class="ruby-identifier">read_state_endpoint</span>(<span class="ruby-identifier">canister_id</span>, <span class="ruby-identifier">data</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">ret</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Invalid path requested.&#39;</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ValueError</span>, <span class="ruby-string">&#39;Invalid path requested!&#39;</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">ret</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Could not parse body as read request: invalid type: byte array, expected a sequence&#39;</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ValueError</span>, <span class="ruby-string">&#39;Could not parse body as read request: invalid type: byte array, expected a sequence&#39;</span>
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-keyword">begin</span>
-    <span class="ruby-identifier">d</span> = <span class="ruby-constant">CBOR</span>.<span class="ruby-identifier">decode</span>(<span class="ruby-identifier">ret</span>)
-  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ValueError</span>, <span class="ruby-node">&quot;Unable to decode cbor value: #{ret}&quot;</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-constant">CBOR</span>.<span class="ruby-identifier">decode</span>(<span class="ruby-identifier">d</span>.<span class="ruby-identifier">value</span>[<span class="ruby-string">&#39;certificate&#39;</span>])
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-read_state_raw_and_verify" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">read_state_raw_and_verify</span><span
-            class="method-args">(canister_id, paths)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Sends a raw read state request to a canister, verifies the response, and handles it.</p>
-
-<p>@param canister_id [String] The ID of the target canister. @param paths [Array] The paths to read from the canister&#39;s state. @return [Object] The decoded response from the canister.</p>
-          
-          
-
-          
-          <div class="method-source-code" id="read_state_raw_and_verify-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 208</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_state_raw_and_verify</span>(<span class="ruby-identifier">canister_id</span>, <span class="ruby-identifier">paths</span>)
+            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 181</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">read_state_raw</span>(<span class="ruby-identifier">canister_id</span>, <span class="ruby-identifier">paths</span>, <span class="ruby-identifier">bls_verify</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">req</span> = {
     <span class="ruby-string">&#39;request_type&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;read_state&#39;</span>,
     <span class="ruby-string">&#39;sender&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@identity</span>.<span class="ruby-identifier">sender</span>.<span class="ruby-identifier">bytes</span>,
@@ -797,10 +741,10 @@
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">cert</span> = <span class="ruby-constant">CBOR</span>.<span class="ruby-identifier">decode</span>(<span class="ruby-identifier">d</span>.<span class="ruby-identifier">value</span>[<span class="ruby-string">&#39;certificate&#39;</span>])
 
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">verify</span>(<span class="ruby-identifier">cert</span>, <span class="ruby-identifier">canister_id</span>)
-    <span class="ruby-identifier">cert</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">bls_verify</span>
+    <span class="ruby-identifier">verify</span>(<span class="ruby-identifier">cert</span>, <span class="ruby-identifier">canister_id</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">cert</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">cert</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -834,7 +778,7 @@
 
           
           <div class="method-source-code" id="request_status_raw-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 242</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 215</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">request_status_raw</span>(<span class="ruby-identifier">canister_id</span>, <span class="ruby-identifier">req_id</span>)
   <span class="ruby-identifier">paths</span> = [[<span class="ruby-string">&#39;request_status&#39;</span>, <span class="ruby-identifier">req_id</span>]]
   <span class="ruby-identifier">cert</span> = <span class="ruby-identifier">read_state_raw</span>(<span class="ruby-identifier">canister_id</span>, <span class="ruby-identifier">paths</span>)
@@ -923,25 +867,25 @@
 
         <div class="method-description">
           
-          
+          <p>Verify a BLS signature The signature must be exactly 48 bytes (compressed G1 element) The key must be exactly 96 bytes (compressed G2 element)</p>
           
           
 
           
           <div class="method-source-code" id="verify-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 278</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 254</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verify</span>(<span class="ruby-identifier">cert</span>, <span class="ruby-identifier">canister_id</span>)
-  <span class="ruby-identifier">sig</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Certificate</span>.<span class="ruby-identifier">signature</span>(<span class="ruby-identifier">cert</span>).<span class="ruby-identifier">str2hex</span>
+  <span class="ruby-identifier">signature_hex</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Certificate</span>.<span class="ruby-identifier">signature</span>(<span class="ruby-identifier">cert</span>).<span class="ruby-identifier">str2hex</span>
   <span class="ruby-identifier">tree</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Certificate</span>.<span class="ruby-identifier">tree</span>(<span class="ruby-identifier">cert</span>)
   <span class="ruby-identifier">delegation</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Certificate</span>.<span class="ruby-identifier">delegation</span>(<span class="ruby-identifier">cert</span>)
   <span class="ruby-identifier">root_hash</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Certificate</span>.<span class="ruby-identifier">reconstruct</span>(<span class="ruby-identifier">tree</span>).<span class="ruby-identifier">str2hex</span>
   <span class="ruby-identifier">msg</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">IC_STATE_ROOT_DOMAIN_SEPARATOR</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">root_hash</span>
   <span class="ruby-identifier">der_key</span> = <span class="ruby-identifier">check_delegation</span>(<span class="ruby-identifier">delegation</span>, <span class="ruby-identifier">canister_id</span>, <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">public_key_hash</span> = <span class="ruby-identifier">extract_der</span>(<span class="ruby-identifier">der_key</span>).<span class="ruby-identifier">str2hex</span>
-  <span class="ruby-identifier">byebug</span>
-  <span class="ruby-identifier">public_key</span> = <span class="ruby-constant">BLS</span><span class="ruby-operator">::</span><span class="ruby-constant">PointG1</span>.<span class="ruby-identifier">from_hex</span>(<span class="ruby-identifier">public_key_hash</span>)
 
-  <span class="ruby-constant">BLS</span>.<span class="ruby-identifier">verify</span>(<span class="ruby-identifier">sig</span>, <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">public_key</span>)
+  <span class="ruby-identifier">public_key</span> = <span class="ruby-constant">BLS</span><span class="ruby-operator">::</span><span class="ruby-constant">PointG2</span>.<span class="ruby-identifier">from_hex</span>(<span class="ruby-identifier">public_key_hash</span>)
+  <span class="ruby-identifier">signature</span> = <span class="ruby-constant">BLS</span><span class="ruby-operator">::</span><span class="ruby-constant">PointG1</span>.<span class="ruby-identifier">from_hex</span>(<span class="ruby-identifier">signature_hex</span>)
+  <span class="ruby-constant">BLS</span>.<span class="ruby-identifier">verify</span>(<span class="ruby-identifier">signature</span>, <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">public_key</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
