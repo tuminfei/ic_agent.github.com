@@ -306,13 +306,13 @@
 
         <div class="method-description">
           
-          
+          <p>Check the delegation and return the corresponding root key.</p>
           
           
 
           
           <div class="method-source-code" id="check_delegation-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 268</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 269</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">check_delegation</span>(<span class="ruby-identifier">delegation</span>, <span class="ruby-identifier">effective_canister_id</span>, <span class="ruby-identifier">disable_range_check</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@root_key</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">delegation</span>
 
@@ -369,13 +369,13 @@
 
         <div class="method-description">
           
-          
+          <p>Extract the BLS public key from the DER buffer.</p>
           
           
 
           
           <div class="method-source-code" id="extract_der-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 309</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 311</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">extract_der</span>(<span class="ruby-identifier">der_buf</span>)
   <span class="ruby-identifier">bls_der_prefix</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">BN</span>.<span class="ruby-identifier">from_hex</span>(<span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">BLS_DER_PREFIX</span>).<span class="ruby-identifier">to_s</span>(<span class="ruby-value">2</span>)
   <span class="ruby-identifier">expected_length</span> = <span class="ruby-identifier">bls_der_prefix</span>.<span class="ruby-identifier">bytesize</span> <span class="ruby-operator">+</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">BLS_KEY_LENGTH</span>
@@ -543,7 +543,7 @@
 
           
           <div class="method-source-code" id="principal_is_within_ranges-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 302</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/agent.rb, line 303</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">principal_is_within_ranges</span>(<span class="ruby-identifier">principal</span>, <span class="ruby-identifier">ranges</span>)
   <span class="ruby-identifier">ranges</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">range</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">range</span>[<span class="ruby-string">&#39;low&#39;</span>].<span class="ruby-identifier">lt_eq</span>(<span class="ruby-identifier">principal</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">range</span>[<span class="ruby-string">&#39;high&#39;</span>].<span class="ruby-identifier">gt_eq</span>(<span class="ruby-identifier">principal</span>)

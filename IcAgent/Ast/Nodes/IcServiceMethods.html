@@ -92,6 +92,8 @@
 
   <section class="description">
     
+<p>Represents IC service methods node in the abstract syntax tree, a subclass of <a href="NamedNode.html"><code>NamedNode</code></a>.</p>
+
   </section>
 
   
@@ -124,13 +126,13 @@
 
         <div class="method-description">
           
-          
+          <p>The title of the IC service methods node.</p>
           
           
 
           
           <div class="method-source-code" id="title-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 282</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 356</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">title</span>
   <span class="ruby-value">:ic_service_methods</span>
 <span class="ruby-keyword">end</span></pre>
@@ -157,13 +159,13 @@
 
         <div class="method-description">
           
-          
+          <p>Returns an array of IC service method nodes.</p>
           
           
 
           
           <div class="method-source-code" id="value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 286</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 361</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">value</span>
   <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">update</span><span class="ruby-operator">|</span> <span class="ruby-identifier">update</span>.<span class="ruby-identifier">value</span> }
 <span class="ruby-keyword">end</span></pre>

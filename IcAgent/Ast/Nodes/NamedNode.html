@@ -98,6 +98,8 @@
 
   <section class="description">
     
+<p>Represents a named node in the abstract syntax tree.</p>
+
   </section>
 
   
@@ -136,7 +138,7 @@
 
           
           <div class="method-source-code" id="elements_to_s-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">elements_to_s</span>
   <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_s</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -169,7 +171,7 @@
 
           
           <div class="method-source-code" id="source_content-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 23</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">source_content</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">text_value</span>.<span class="ruby-identifier">strip</span>
 <span class="ruby-keyword">end</span></pre>
@@ -196,13 +198,13 @@
 
         <div class="method-description">
           
-          
+          <p>The title of the named node.</p>
           
           
 
           
           <div class="method-source-code" id="title-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 7</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">title</span>
   <span class="ruby-value">:named_node</span>
 <span class="ruby-keyword">end</span></pre>
@@ -229,13 +231,13 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the node and its children to an array representation.</p>
           
           
 
           
           <div class="method-source-code" id="to_array-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 11</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_array</span>
   [<span class="ruby-identifier">title</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_array</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -262,13 +264,13 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the node and its children to a string representation.</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 15</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{title.to_s.upcase} #{elements_to_s}&quot;</span>
 <span class="ruby-keyword">end</span></pre>

@@ -196,13 +196,20 @@
 
         <div class="method-description">
           
-          
+          <p>Constructor for the <a href="CyclesWallet.html"><code>CyclesWallet</code></a> class.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>iden: (Optional) An instance of the <a href="../Identity.html"><code>Identity</code></a> class.</p>
+</li><li>
+<p>wallet_id: The ID of the <a href="CyclesWallet.html"><code>CyclesWallet</code></a>.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/common/cycles_wallet.rb, line 264</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/common/cycles_wallet.rb, line 269</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">iden</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">wallet_id</span>)
   <span class="ruby-ivar">@identity</span> = <span class="ruby-identifier">iden</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Identity</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">iden</span>
   <span class="ruby-ivar">@client</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>

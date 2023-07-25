@@ -122,13 +122,22 @@
 
         <div class="method-description">
           
-          
+          <p>Constructor for the <a href="Canister.html"><code>Canister</code></a> class.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>agent: An instance of the agent.</p>
+</li><li>
+<p>canister_id: ID of the canister.</p>
+</li><li>
+<p>candid: (Optional) The <a href="Candid.html"><code>Candid</code></a> description of the canister. If not provided, it will be queried.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/canister.rb, line 5</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/canister.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">agent</span>, <span class="ruby-identifier">canister_id</span>, <span class="ruby-identifier">candid</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@agent</span> = <span class="ruby-identifier">agent</span>
   <span class="ruby-ivar">@canister_id</span> = <span class="ruby-identifier">canister_id</span>
@@ -144,6 +153,7 @@
     <span class="ruby-identifier">raise</span> <span class="ruby-constant">BaseException</span>, <span class="ruby-node">&quot;canister #{@canister_id} has no __get_candid_interface_tmp_hack method.&quot;</span>
   <span class="ruby-keyword">end</span>
 
+  <span class="ruby-comment"># Parse the Candid description to extract information about service methods.</span>
   <span class="ruby-identifier">parser</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Ast</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-ivar">@candid</span>)
 

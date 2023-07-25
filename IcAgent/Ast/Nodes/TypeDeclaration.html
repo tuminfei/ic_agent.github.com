@@ -106,6 +106,8 @@
 
   <section class="description">
     
+<p>Represents a type declaration node in the abstract syntax tree, a subclass of <a href="NamedNode.html"><code>NamedNode</code></a>.</p>
+
   </section>
 
   
@@ -138,13 +140,13 @@
 
         <div class="method-description">
           
-          
+          <p>The title of the type declaration node.</p>
           
           
 
           
           <div class="method-source-code" id="title-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">title</span>
   <span class="ruby-value">:type_declaration</span>
 <span class="ruby-keyword">end</span></pre>
@@ -171,13 +173,13 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the type declaration node to a hash representation.</p>
           
           
 
           
           <div class="method-source-code" id="to_obj-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 103</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 126</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_obj</span>
   {
     <span class="ruby-string">&#39;type_param_name&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">type_param_name</span>,
@@ -209,13 +211,13 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the type declaration node to a string representation.</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 99</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-identifier">text_value</span>
 <span class="ruby-keyword">end</span></pre>
@@ -242,13 +244,13 @@
 
         <div class="method-description">
           
-          
+          <p>Returns an array of keys of type child items.</p>
           
           
 
           
           <div class="method-source-code" id="type_child_item_keys-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 83</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">type_child_item_keys</span>
   <span class="ruby-identifier">names</span> = []
   <span class="ruby-identifier">type_child_items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ele</span><span class="ruby-operator">|</span>
@@ -279,13 +281,13 @@
 
         <div class="method-description">
           
-          
+          <p>Returns an array of type child items.</p>
           
           
 
           
           <div class="method-source-code" id="type_child_items-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 75</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">type_child_items</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">elements</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">elements</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">elements</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">elements</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">elements</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value">0</span>]
     <span class="ruby-identifier">elements</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">elements</span>
@@ -316,13 +318,13 @@
 
         <div class="method-description">
           
-          
+          <p>Returns the content of the type parameter without newlines and trailing &#39;;}&#39; replaced with &#39;}&#39;.</p>
           
           
 
           
           <div class="method-source-code" id="type_param_content-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 67</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">type_param_content</span>
   <span class="ruby-identifier">elements</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">source_content</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;\n&quot;</span>, <span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&#39;;}&#39;</span>, <span class="ruby-string">&#39;}&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -349,13 +351,13 @@
 
         <div class="method-description">
           
-          
+          <p>Returns the name of the type parameter.</p>
           
           
 
           
           <div class="method-source-code" id="type_param_name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 63</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">type_param_name</span>
   <span class="ruby-identifier">elements</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">source_content</span>
 <span class="ruby-keyword">end</span></pre>
@@ -382,13 +384,13 @@
 
         <div class="method-description">
           
-          
+          <p>Returns an array of referenced types in the type parameter content.</p>
           
           
 
           
           <div class="method-source-code" id="type_refer_items-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 91</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">type_refer_items</span>
   <span class="ruby-identifier">source_string</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">type_param_content</span>
   <span class="ruby-identifier">parser</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Ast</span><span class="ruby-operator">::</span><span class="ruby-constant">StatementParser</span>.<span class="ruby-identifier">new</span>
@@ -419,13 +421,13 @@
 
         <div class="method-description">
           
-          
+          <p>Returns the opt code of the root type element.</p>
           
           
 
           
           <div class="method-source-code" id="type_root_opt_code-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 71</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">type_root_opt_code</span>
   <span class="ruby-identifier">elements</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">opt_code</span>
 <span class="ruby-keyword">end</span></pre>

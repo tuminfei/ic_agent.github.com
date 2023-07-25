@@ -94,6 +94,8 @@
 
   <section class="description">
     
+<p>Represents an IC service item node in the abstract syntax tree, a subclass of <a href="NamedNode.html"><code>NamedNode</code></a>.</p>
+
   </section>
 
   
@@ -126,13 +128,13 @@
 
         <div class="method-description">
           
-          
+          <p>The title of the IC service item node.</p>
           
           
 
           
           <div class="method-source-code" id="title-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 298</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 377</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">title</span>
   <span class="ruby-value">:ic_service_item</span>
 <span class="ruby-keyword">end</span></pre>
@@ -159,13 +161,13 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the IC service item node to a hash representation.</p>
           
           
 
           
           <div class="method-source-code" id="to_obj-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 306</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 387</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_obj</span>
   <span class="ruby-identifier">obj</span> = {}
   <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
@@ -196,13 +198,13 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the IC service item node to a string representation.</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 302</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 382</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-identifier">elements_to_s</span>
 <span class="ruby-keyword">end</span></pre>

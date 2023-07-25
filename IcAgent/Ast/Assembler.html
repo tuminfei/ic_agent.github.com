@@ -166,13 +166,13 @@
 
         <div class="method-description">
           
-          
+          <p>Builds a <a href="../Candid.html"><code>Candid</code></a> blob type.</p>
           
           
 
           
           <div class="method-source-code" id="build_blob-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 12</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">build_blob</span>
   <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Candid</span><span class="ruby-operator">::</span><span class="ruby-constant">BaseTypes</span>.<span class="ruby-identifier">vec</span>(<span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Candid</span><span class="ruby-operator">::</span><span class="ruby-constant">BaseTypes</span>.<span class="ruby-identifier">nat8</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -199,13 +199,13 @@
 
         <div class="method-description">
           
-          
+          <p>Builds a <a href="../Candid.html"><code>Candid</code></a> optional type from a given child type.</p>
           
           
 
           
           <div class="method-source-code" id="build_opt-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 16</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">build_opt</span>(<span class="ruby-identifier">child_type</span>, <span class="ruby-identifier">key_types</span> = {})
   <span class="ruby-identifier">child_type</span> = <span class="ruby-identifier">key_types</span>[<span class="ruby-identifier">child_type</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">build_type</span>(<span class="ruby-identifier">child_type</span>, <span class="ruby-identifier">key_types</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">key_types</span>[<span class="ruby-identifier">child_type</span>]
   <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Candid</span><span class="ruby-operator">::</span><span class="ruby-constant">BaseTypes</span>.<span class="ruby-identifier">opt</span>(<span class="ruby-identifier">child_type</span>)
@@ -233,13 +233,13 @@
 
         <div class="method-description">
           
-          
+          <p>Builds a <a href="../Candid.html"><code>Candid</code></a> record type from a given hash of field names and types.</p>
           
           
 
           
           <div class="method-source-code" id="build_record-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 26</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">build_record</span>(<span class="ruby-identifier">child_hash</span>, <span class="ruby-identifier">multi_types</span> = {}, <span class="ruby-identifier">key_types</span> = {})
   <span class="ruby-identifier">child_types</span> = {}
   <span class="ruby-identifier">child_hash</span>.<span class="ruby-identifier">each_key</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
@@ -277,13 +277,13 @@
 
         <div class="method-description">
           
-          
+          <p>Builds a single <a href="../Candid.html"><code>Candid</code></a> type from a given child type.</p>
           
           
 
           
           <div class="method-source-code" id="build_single_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 8</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">build_single_type</span>(<span class="ruby-identifier">child_type</span>)
   <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Candid</span><span class="ruby-operator">::</span><span class="ruby-constant">BaseTypes</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">child_type</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -310,13 +310,13 @@
 
         <div class="method-description">
           
-          
+          <p>Builds a <a href="../Candid.html"><code>Candid</code></a> type based on the given type string.</p>
           
           
 
           
           <div class="method-source-code" id="build_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 56</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">build_type</span>(<span class="ruby-identifier">type_str</span>, <span class="ruby-identifier">key_types</span> = {}, <span class="ruby-identifier">multi_types</span> = {})
   <span class="ruby-identifier">opt_code</span> = <span class="ruby-identifier">get_opt_code</span>(<span class="ruby-identifier">type_str</span>)
 
@@ -377,13 +377,13 @@
 
         <div class="method-description">
           
-          
+          <p>Builds a <a href="../Candid.html"><code>Candid</code></a> variant type from a given hash of field names and types.</p>
           
           
 
           
           <div class="method-source-code" id="build_variant-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 41</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">build_variant</span>(<span class="ruby-identifier">child_hash</span>, <span class="ruby-identifier">multi_types</span> = {}, <span class="ruby-identifier">key_types</span> = {})
   <span class="ruby-identifier">child_types</span> = {}
   <span class="ruby-identifier">child_hash</span>.<span class="ruby-identifier">each_key</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
@@ -421,13 +421,13 @@
 
         <div class="method-description">
           
-          
+          <p>Builds a <a href="../Candid.html"><code>Candid</code></a> vector type from a given child type.</p>
           
           
 
           
           <div class="method-source-code" id="build_vec-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 21</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">build_vec</span>(<span class="ruby-identifier">child_type</span>, <span class="ruby-identifier">key_types</span> = {})
   <span class="ruby-identifier">child_type</span> = <span class="ruby-identifier">key_types</span>[<span class="ruby-identifier">child_type</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">build_type</span>(<span class="ruby-identifier">child_type</span>, <span class="ruby-identifier">key_types</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">key_types</span>[<span class="ruby-identifier">child_type</span>]
   <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Candid</span><span class="ruby-operator">::</span><span class="ruby-constant">BaseTypes</span>.<span class="ruby-identifier">vec</span>(<span class="ruby-identifier">child_type</span>)
@@ -455,13 +455,13 @@
 
         <div class="method-description">
           
-          
+          <p>Extracts the child <a href="../Candid.html"><code>Candid</code></a> code from the type string.</p>
           
           
 
           
           <div class="method-source-code" id="get_child_code-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 131</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 145</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_child_code</span>(<span class="ruby-identifier">item_str</span>, <span class="ruby-identifier">index_str</span>)
   <span class="ruby-identifier">first_index</span> = <span class="ruby-identifier">item_str</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">index_str</span>)
   <span class="ruby-identifier">item_str</span>[(<span class="ruby-identifier">first_index</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">index_str</span>.<span class="ruby-identifier">size</span>)<span class="ruby-operator">..</span>].<span class="ruby-identifier">strip</span>
@@ -489,13 +489,13 @@
 
         <div class="method-description">
           
-          
+          <p>Extracts the <a href="../Candid.html"><code>Candid</code></a> code (e.g., “record”, “variant”, “opt”, etc.) from the type string.</p>
           
           
 
           
           <div class="method-source-code" id="get_opt_code-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 126</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 139</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_opt_code</span>(<span class="ruby-identifier">item_str</span>)
   <span class="ruby-identifier">opt_code</span> = <span class="ruby-identifier">item_str</span>.<span class="ruby-identifier">strip</span>
   <span class="ruby-identifier">opt_code</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39; &#39;</span>)[<span class="ruby-value">0</span>]
@@ -523,13 +523,13 @@
 
         <div class="method-description">
           
-          
+          <p>Gets the refer types used in the type string.</p>
           
           
 
           
           <div class="method-source-code" id="get_params_refer_values-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 155</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 171</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_params_refer_values</span>(<span class="ruby-identifier">type_str</span>)
   <span class="ruby-identifier">parser</span> = <span class="ruby-constant">IcAgent</span><span class="ruby-operator">::</span><span class="ruby-constant">Ast</span><span class="ruby-operator">::</span><span class="ruby-constant">StatementParser</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">type_str</span>)
@@ -559,13 +559,13 @@
 
         <div class="method-description">
           
-          
+          <p>Extracts the content of a <a href="../Candid.html"><code>Candid</code></a> record type from the type string.</p>
           
           
 
           
           <div class="method-source-code" id="get_record_content-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 102</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_record_content</span>(<span class="ruby-identifier">record_str</span>)
   <span class="ruby-identifier">record_str</span> = <span class="ruby-identifier">record_str</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-string">&#39;record&#39;</span>, <span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-string">&#39;{&#39;</span>, <span class="ruby-string">&#39;&#39;</span>)
   <span class="ruby-identifier">record_str</span> = <span class="ruby-identifier">replace_last_occurrence</span>(<span class="ruby-identifier">record_str</span>, <span class="ruby-string">&#39;}&#39;</span>, <span class="ruby-string">&#39;&#39;</span>)
@@ -594,13 +594,13 @@
 
         <div class="method-description">
           
-          
+          <p>Extracts the key-value pairs from a <a href="../Candid.html"><code>Candid</code></a> record item string.</p>
           
           
 
           
           <div class="method-source-code" id="get_record_key_value-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 114</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 126</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_record_key_value</span>(<span class="ruby-identifier">item_str</span>, <span class="ruby-identifier">index_str</span>, <span class="ruby-identifier">key_index</span> = <span class="ruby-value">0</span>)
   <span class="ruby-identifier">first_index</span> = <span class="ruby-identifier">item_str</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">index_str</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">first_index</span>
@@ -635,13 +635,13 @@
 
         <div class="method-description">
           
-          
+          <p>Extracts the content of a <a href="../Candid.html"><code>Candid</code></a> variant type from the type string.</p>
           
           
 
           
           <div class="method-source-code" id="get_variant_content-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 108</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 119</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_variant_content</span>(<span class="ruby-identifier">variant_str</span>)
   <span class="ruby-identifier">variant_str</span> = <span class="ruby-identifier">variant_str</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-string">&#39;variant&#39;</span>, <span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-string">&#39;{&#39;</span>, <span class="ruby-string">&#39;&#39;</span>)
   <span class="ruby-identifier">variant_str</span> = <span class="ruby-identifier">replace_last_occurrence</span>(<span class="ruby-identifier">variant_str</span>, <span class="ruby-string">&#39;}&#39;</span>, <span class="ruby-string">&#39;&#39;</span>)
@@ -670,13 +670,13 @@
 
         <div class="method-description">
           
-          
+          <p>Recovers the original type string from the multi_types hash.</p>
           
           
 
           
           <div class="method-source-code" id="recover_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 162</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">recover_type</span>(<span class="ruby-identifier">type_str</span>, <span class="ruby-identifier">multi_types</span>)
   <span class="ruby-identifier">multi_types</span>.<span class="ruby-identifier">each_key</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">type_str</span> = <span class="ruby-identifier">type_str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">multi_types</span>[<span class="ruby-identifier">key</span>])
@@ -706,13 +706,13 @@
 
         <div class="method-description">
           
-          
+          <p>Replaces the last occurrence of a pattern in a string with the given replacement.</p>
           
           
 
           
           <div class="method-source-code" id="replace_last_occurrence-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 94</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">replace_last_occurrence</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">replacement</span>)
   <span class="ruby-identifier">last_index</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">rindex</span>(<span class="ruby-identifier">pattern</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">string</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">last_index</span>
@@ -743,13 +743,13 @@
 
         <div class="method-description">
           
-          
+          <p>Replaces occurrences of <a href="../Candid.html"><code>Candid</code></a> record and variant types with unique type names.</p>
           
           
 
           
           <div class="method-source-code" id="replace_multi_type-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 136</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/assembler.rb, line 151</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">replace_multi_type</span>(<span class="ruby-identifier">type_str</span>)
   <span class="ruby-identifier">replaced_hash</span> = {}
   <span class="ruby-identifier">modified_str</span> = <span class="ruby-identifier">type_str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/record\s*{[^{}]*}/</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">match</span><span class="ruby-operator">|</span>

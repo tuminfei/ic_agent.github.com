@@ -100,6 +100,8 @@
 
   <section class="description">
     
+<p>Represents a statement node in the abstract syntax tree with additional attributes.</p>
+
   </section>
 
   
@@ -125,7 +127,7 @@
 
         <div class="method-description">
         
-        
+        <p>Additional attributes to store child count and depth.</p>
         
         </div>
       </div>
@@ -138,7 +140,7 @@
 
         <div class="method-description">
         
-        
+        <p>Additional attributes to store child count and depth.</p>
         
         </div>
       </div>
@@ -166,13 +168,13 @@
 
         <div class="method-description">
           
-          
+          <p>Adds a child to the statement node.</p>
           
           
 
           
           <div class="method-source-code" id="add_child-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_child</span>
   <span class="ruby-ivar">@child_count</span> <span class="ruby-operator">||=</span> <span class="ruby-value">0</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
 <span class="ruby-keyword">end</span></pre>
@@ -199,13 +201,13 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the children of the statement node to a string.</p>
           
           
 
           
           <div class="method-source-code" id="elements_to_s-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 21</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">elements_to_s</span>
   <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_s</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -232,13 +234,13 @@
 
         <div class="method-description">
           
-          
+          <p>Returns the source content of the statement node by removing leading and trailing whitespaces.</p>
           
           
 
           
           <div class="method-source-code" id="source_content-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 29</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">source_content</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">text_value</span>.<span class="ruby-identifier">strip</span>
 <span class="ruby-keyword">end</span></pre>
@@ -265,13 +267,13 @@
 
         <div class="method-description">
           
-          
+          <p>The title of the statement node, by default :named_node.</p>
           
           
 
           
           <div class="method-source-code" id="title-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 9</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">title</span>
   <span class="ruby-value">:named_node</span>
 <span class="ruby-keyword">end</span></pre>
@@ -298,13 +300,13 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the statement node and its children to an array representation.</p>
           
           
 
           
           <div class="method-source-code" id="to_array-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 13</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_array</span>
   [<span class="ruby-identifier">title</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_array</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -331,13 +333,13 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the statement node and its children to a string representation.</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 17</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/statement_nodes.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-node">&quot;#{title.to_s.upcase} #{elements_to_s}&quot;</span>
 <span class="ruby-keyword">end</span></pre>

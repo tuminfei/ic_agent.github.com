@@ -100,6 +100,8 @@
 
   <section class="description">
     
+<p>The <a href="StatementParser.html"><code>StatementParser</code></a> class provides methods to parse data and generate an Abstract Syntax Tree (AST) for nested types based on the specified grammar.</p>
+
   </section>
 
   
@@ -209,8 +211,9 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 23</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
+  <span class="ruby-comment"># Loads the Treetop grammar from the specified file.</span>
   <span class="ruby-constant">Treetop</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>), <span class="ruby-string">&#39;nested_type_grammar.treetop&#39;</span>)))
   <span class="ruby-ivar">@parser</span> = <span class="ruby-constant">TypeGrammarParser</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -245,13 +248,13 @@
 
         <div class="method-description">
           
-          
+          <p>Cleans up the AST tree by removing unnecessary nodes.</p>
           
           
 
           
           <div class="method-source-code" id="clean_tree-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 41</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clean_tree</span>(<span class="ruby-identifier">root_node</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">root_node</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">nil?</span>
 
@@ -281,13 +284,13 @@
 
         <div class="method-description">
           
-          <p>@param [Object] root_node @param [nil] tree_root_node @param [nil] tree_current_node</p>
+          <p>Generates the source tree from the AST tree. @param [Object] root_node @param [nil] tree_root_node @param [nil] tree_current_node</p>
           
           
 
           
           <div class="method-source-code" id="gen_source_tree-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 51</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gen_source_tree</span>(<span class="ruby-identifier">root_node</span>, <span class="ruby-identifier">tree_root_node</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">tree_current_node</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">root_node</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">nil?</span>
 
@@ -349,13 +352,13 @@
 
         <div class="method-description">
           
-          
+          <p>Returns the child nodes of the AST statement.</p>
           
           
 
           
           <div class="method-source-code" id="ic_statement_childs-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 94</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 109</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ic_statement_childs</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">tree</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">tree</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value">0</span>]
     <span class="ruby-identifier">tree</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">elements</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">elements</span>
@@ -384,13 +387,13 @@
 
         <div class="method-description">
           
-          
+          <p>Returns the root node of the AST statement.</p>
           
           
 
           
           <div class="method-source-code" id="ic_statement_root-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 90</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ic_statement_root</span>
   <span class="ruby-identifier">tree</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value">0</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -417,13 +420,25 @@
 
         <div class="method-description">
           
-          
+          <p>Parses the input data and generates the Abstract Syntax Tree (AST) for nested types based on the grammar.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>data: The input data to be parsed.</p>
+</li><li>
+<p>return_type: The desired format for the parsed AST (:string by default).</p>
+</li></ul>
+
+<p>Returns:</p>
+<ul><li>
+<p>The generated AST in the specified format.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 28</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/statement_parser.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">return_type</span> = <span class="ruby-value">:string</span>)
   <span class="ruby-identifier">tree</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">data</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Exception</span>, <span class="ruby-node">&quot;Parse error at offset: #{@parser.index} #{@parser.failure_reason}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">tree</span>.<span class="ruby-identifier">nil?</span>

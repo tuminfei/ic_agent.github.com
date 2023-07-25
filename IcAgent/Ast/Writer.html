@@ -92,6 +92,8 @@
 
   <section class="description">
     
+<p>The <a href="Writer.html"><code>Writer</code></a> class provides methods to represent an Abstract Syntax Tree (AST) in different formats.</p>
+
   </section>
 
   
@@ -124,13 +126,18 @@
 
         <div class="method-description">
           
-          
+          <p>Initializes the <a href="Writer.html"><code>Writer</code></a> with an Abstract Syntax Tree (AST).</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>tree: The Abstract Syntax Tree (AST) to be represented.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/writer.rb, line 4</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/writer.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">tree</span>)
   <span class="ruby-ivar">@tree</span> = <span class="ruby-identifier">tree</span>
 <span class="ruby-keyword">end</span></pre>
@@ -165,13 +172,30 @@
 
         <div class="method-description">
           
-          
+          <p>Writes the AST in the desired format.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>return_type: The desired format to represent the AST (:string by default).</p>
+</li></ul>
+
+<p>Returns:</p>
+<ul><li>
+<p>The AST in the specified format:</p>
+<ul><li>
+<p>:tree: Returns the original AST.</p>
+</li><li>
+<p>:array: Returns the AST as an array.</p>
+</li><li>
+<p>:string: Returns the AST as a string.</p>
+</li></ul>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="write-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/writer.rb, line 8</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/writer.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">write</span>(<span class="ruby-identifier">return_type</span> = <span class="ruby-value">:string</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">return_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:tree</span>
     <span class="ruby-ivar">@tree</span>

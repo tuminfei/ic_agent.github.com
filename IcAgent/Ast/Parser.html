@@ -108,6 +108,8 @@
 
   <section class="description">
     
+<p>The <a href="Parser.html"><code>Parser</code></a> class provides methods to parse data using a Treetop grammar and work with the resulting Abstract Syntax Tree (AST).</p>
+
   </section>
 
   
@@ -174,13 +176,13 @@
 
         <div class="method-description">
           
-          
+          <p>Initializes the <a href="Parser.html"><code>Parser</code></a> by loading the Treetop grammar file.</p>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 8</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
   <span class="ruby-constant">Treetop</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>), <span class="ruby-string">&#39;did_grammar.treetop&#39;</span>)))
   <span class="ruby-ivar">@parser</span> = <span class="ruby-constant">DIDGrammarParser</span>.<span class="ruby-identifier">new</span>
@@ -216,13 +218,13 @@
 
         <div class="method-description">
           
-          
+          <p>Recursively cleans the syntax tree by removing nodes of class &#39;Treetop::Runtime::SyntaxNode&#39;. This method is used to remove unnecessary nodes generated during parsing.</p>
           
           
 
           
           <div class="method-source-code" id="clean_tree-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clean_tree</span>(<span class="ruby-identifier">root_node</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">root_node</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">nil?</span>
 
@@ -252,13 +254,18 @@
 
         <div class="method-description">
           
-          
+          <p>Retrieves the root node of the IC service from the AST.</p>
+
+<p>Returns:</p>
+<ul><li>
+<p>The root node representing the IC service, or nil if not found.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="ic_service-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ic_service</span>
   <span class="ruby-identifier">tree</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ele</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">ele</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ele</span>.<span class="ruby-identifier">title</span> <span class="ruby-operator">==</span> <span class="ruby-value">:ic_service</span>
@@ -288,13 +295,18 @@
 
         <div class="method-description">
           
-          
+          <p>Retrieves the root node of the IC service methods from the AST.</p>
+
+<p>Returns:</p>
+<ul><li>
+<p>The root node representing the IC service methods, or nil if not found.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="ic_service_methods-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 55</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ic_service_methods</span>
   <span class="ruby-identifier">ic_service_tree</span> = <span class="ruby-identifier">ic_service</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">ic_service_tree</span>.<span class="ruby-identifier">empty?</span>
@@ -327,13 +339,23 @@
 
         <div class="method-description">
           
-          
+          <p>Retrieves the AST node of an IC type by its name.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>type_name: The name of the IC type to retrieve.</p>
+</li></ul>
+
+<p>Returns:</p>
+<ul><li>
+<p>The AST node representing the IC type, or nil if not found.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="ic_type_by_name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 77</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ic_type_by_name</span>(<span class="ruby-identifier">type_name</span>)
   <span class="ruby-identifier">ic_types</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ic_type</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">ic_type</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">type_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">ic_type_name</span>(<span class="ruby-identifier">ic_type</span>)
@@ -363,13 +385,13 @@
 
         <div class="method-description">
           
-          
+          <p>Retrieves the name of an IC type from its AST node.</p>
           
           
 
           
           <div class="method-source-code" id="ic_type_name-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 65</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ic_type_name</span>(<span class="ruby-identifier">ic_type</span>)
   <span class="ruby-identifier">ic_type</span>.<span class="ruby-identifier">type_param_name</span>
 <span class="ruby-keyword">end</span></pre>
@@ -396,13 +418,13 @@
 
         <div class="method-description">
           
-          
+          <p>Retrieves an array of names of all IC types from the AST.</p>
           
           
 
           
           <div class="method-source-code" id="ic_type_names-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 69</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 96</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ic_type_names</span>
   <span class="ruby-identifier">names_arr</span> = []
   <span class="ruby-identifier">ic_types</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ic_type</span><span class="ruby-operator">|</span>
@@ -433,13 +455,13 @@
 
         <div class="method-description">
           
-          
+          <p>Retrieves an array of AST nodes representing IC type declarations.</p>
           
           
 
           
           <div class="method-source-code" id="ic_types-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 39</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ic_types</span>
   <span class="ruby-identifier">type_arr</span> = []
   <span class="ruby-identifier">tree</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ele</span><span class="ruby-operator">|</span>
@@ -470,13 +492,13 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the IC type declarations to an array of corresponding objects.</p>
           
           
 
           
           <div class="method-source-code" id="ic_types_obj-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 47</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ic_types_obj</span>
   <span class="ruby-identifier">obj_arr</span> = []
   <span class="ruby-identifier">ic_types</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ic_type</span><span class="ruby-operator">|</span>
@@ -507,19 +529,36 @@
 
         <div class="method-description">
           
-          
+          <p>Parses the given data using the Treetop parser and returns the AST.</p>
+
+<p>Parameters:</p>
+<ul><li>
+<p>data: The data to be parsed.</p>
+</li><li>
+<p>return_type: The desired return type for the parse result (:string by default).</p>
+</li></ul>
+
+<p>Returns:</p>
+<ul><li>
+<p>The root node of the Abstract Syntax Tree (AST).</p>
+</li></ul>
+
+<p>Raises:</p>
+<ul><li>
+<p>Exception if there is a parse error.</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 13</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/parser.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parse</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">return_type</span> = <span class="ruby-value">:string</span>)
   <span class="ruby-identifier">tree</span> = <span class="ruby-ivar">@parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">data</span>)
 
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Exception</span>, <span class="ruby-node">&quot;Parse error at offset: #{@parser.index} #{@parser.failure_reason}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">tree</span>.<span class="ruby-identifier">nil?</span>
 
-  <span class="ruby-comment"># this edits the tree in place</span>
+  <span class="ruby-comment"># This method edits the tree in place to remove unnecessary syntax nodes.</span>
   <span class="ruby-identifier">clean_tree</span>(<span class="ruby-identifier">tree</span>)
 
   <span class="ruby-ivar">@tree</span> = <span class="ruby-identifier">tree</span>

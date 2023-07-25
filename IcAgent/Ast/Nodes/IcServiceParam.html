@@ -92,6 +92,8 @@
 
   <section class="description">
     
+<p>Represents an IC service param node in the abstract syntax tree, a subclass of <a href="NamedNode.html"><code>NamedNode</code></a>.</p>
+
   </section>
 
   
@@ -124,13 +126,13 @@
 
         <div class="method-description">
           
-          
+          <p>The title of the IC service param node.</p>
           
           
 
           
           <div class="method-source-code" id="title-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 316</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 399</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">title</span>
   <span class="ruby-value">:ic_service_param</span>
 <span class="ruby-keyword">end</span></pre>
@@ -157,13 +159,13 @@
 
         <div class="method-description">
           
-          
+          <p>Converts the IC service param node to a string representation with &#39;#&#39; prefix.</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 320</span>
+            <pre><span class="ruby-comment"># File lib/ic_agent/ast/nodes/named_nodes.rb, line 404</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-node">&quot;# #{elements[0].to_s}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
